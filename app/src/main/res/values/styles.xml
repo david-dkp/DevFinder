@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.DevFinder.Headline5.Light" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontWeight">300</item>
+    </style>
+
+    <style name="Widget.DevFinder.Button" parent="Widget.MaterialComponents.Button">
+        <item name="textAllCaps">false</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.DevFinder.Button</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.DevFinder.Button</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline5</item>
+    </style>
+
+    <style name="ThemeOverlay.DevFinder.Button" parent="">
+        <item name="colorPrimary">?attr/colorPrimaryVariant</item>
+        <item name="colorOnSecondary">?attr/colorOnPrimary</item>
+        <item name="colorControlNormal">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="ShapeAppearance.DevFinder.Button" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="Widget.DevFinder.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="shapeAppearance">@style/ShapeAppearance.DevFinder.TextInputLayout</item>
+    </style>
+
+    <style name="ShapeAppearance.DevFinder.TextInputLayout" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">30dp</item>
+    </style>
+</resources>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
+    >
+
+    <fr.feepin.devfinder.ui.customviews.StepProgressBarView
+        android:id="@+id/stepProgressBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/register_progressBar_marginHorizontal"
+        android:layout_marginTop="@dimen/register_progressBar_marginTop"
+        app:ballRadius="@dimen/stepProgressBar_ballRadius"
+        app:indicatorColor="?attr/colorOnPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_max="@dimen/register_progressBar_maxWidth"
+        app:step="1"
+        app:trackColor="?attr/colorPrimaryVariant"
+        app:trackPadding="@dimen/stepProgressBar_trackPadding"
+        />
+
+    <TextView
+        android:id="@+id/tvWelcomeCommunity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/register_element_marginHorizontal"
+        android:layout_marginTop="@dimen/register_elements_vertical_gap"
+        android:text="@string/register_welcome_community_text"
+        android:textAlignment="center"
+        android:textAppearance="?attr/textAppearanceHeadline4"
+        android:textColor="?attr/colorOnPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stepProgressBar"
+        app:layout_constraintVertical_chainStyle="spread"
+        />
+
+    <TextView
+        android:id="@+id/tvLetPeopleKnow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/register_elements_vertical_gap"
+        android:text="@string/register_describe_let_people_know_text"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.DevFinder.Headline5.Light"
+        android:textColor="?attr/colorOnPrimary"
+        app:layout_constraintLeft_toLeftOf="@id/tvWelcomeCommunity"
+        app:layout_constraintRight_toRightOf="@id/tvWelcomeCommunity"
+        app:layout_constraintTop_toBottomOf="@id/tvWelcomeCommunity"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputNickname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/register_elements_vertical_gap"
+        android:hint="@string/username_hint"
+        app:layout_constraintLeft_toLeftOf="@id/tvWelcomeCommunity"
+        app:layout_constraintRight_toRightOf="@id/tvWelcomeCommunity"
+        app:layout_constraintTop_toBottomOf="@id/tvLetPeopleKnow"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNickname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="text"
+            android:lines="1"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputBio"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/register_elements_vertical_gap"
+        android:layout_marginBottom="@dimen/register_elements_vertical_gap"
+        android:hint="@string/bio_hint"
+        app:layout_constraintBottom_toTopOf="@id/btnNext"
+        app:layout_constraintLeft_toLeftOf="@id/tvWelcomeCommunity"
+        app:layout_constraintRight_toRightOf="@id/tvWelcomeCommunity"
+        app:layout_constraintTop_toBottomOf="@id/inputNickname"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textMultiLine"
+            android:textAlignment="textStart"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/register_next_button_marginRight"
+        android:layout_marginBottom="@dimen/register_next_button_marginBottom"
+        android:drawableEnd="@drawable/ic_arrow_forward"
+        android:text="@string/next_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

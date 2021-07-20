@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="StepProgressBarView">
+        <attr name="trackColor" format="color" />
+        <attr name="indicatorColor" format="color" />
+        <attr name="step" format="integer" />
+        <attr name="ballRadius" format="dimension" />
+        <attr name="trackPadding" format="dimension" />
+    </declare-styleable>
+</resources>
