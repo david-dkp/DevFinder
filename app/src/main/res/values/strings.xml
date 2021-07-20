@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DevFinder</string>
+    <string name="register_welcome_community_text">Welcome to our community</string>
+    <string name="register_describe_let_people_know_text">Let people know who you are</string>
+    <string name="next_text">Next</string>
+    <string name="username_hint">Username</string>
+    <string name="bio_hint">Bio…</string>
 </resources>

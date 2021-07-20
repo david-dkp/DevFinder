@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="register_progressBar_marginTop">20dp</dimen>
+    <dimen name="register_progressBar_maxWidth">400dp</dimen>
+    <dimen name="register_progressBar_marginHorizontal">35dp</dimen>
+    <dimen name="register_element_marginHorizontal">50dp</dimen>
+    <dimen name="register_next_button_marginRight">20dp</dimen>
+    <dimen name="register_next_button_marginBottom">10dp</dimen>
+    <dimen name="register_elements_vertical_gap">30dp</dimen>
+</resources>
