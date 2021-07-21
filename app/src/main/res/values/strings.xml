@@ -5,4 +5,6 @@
     <string name="next_text">Next</string>
     <string name="username_hint">Username</string>
     <string name="bio_hint">Bio…</string>
+    <string name="register_what_technologies_text">What technologies are you using ?</string>
+    <string name="technologies_placeholder">Java, Android…</string>
 </resources>
