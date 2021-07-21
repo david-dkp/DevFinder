@@ -1,97 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/midnight_blue">
-
+    android:background="?attr/colorPrimary"
+    >
 
     <View
         android:layout_width="0dp"
-        android:layout_height="270dp"
-        android:background="@drawable/blue_gradient"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="@dimen/login_round_view_height"
+        android:background="@drawable/login_round_shape"
+        android:backgroundTint="?attr/colorPrimaryVariant"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/tvLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login With"
-        android:textColor="@color/white"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.529" />
+        />
 
     <TextView
         android:id="@+id/tvDevFinder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
-        android:text="DevFinder"
-        android:textColor="@color/white"
-        android:textSize="49sp"
+        android:layout_marginTop="@dimen/login_app_name_marginTop"
+        android:text="@string/app_name"
+        android:textAppearance="?attr/textAppearanceHeadline3"
+        android:textColor="?attr/colorOnPrimary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
-    <Button
+    <TextView
+        android:id="@+id/tvLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/midnight"
-        android:text="About DevFinder"
+        android:text="@string/login_with_text"
+        android:textAppearance="?attr/textAppearanceHeadline4"
+        android:textColor="?attr/colorOnPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imbtnGoogle" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="@integer/login_login_text_vertical_bias"
+        />
 
-    <ImageButton
-        android:id="@+id/imbtnGoogle"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:background="@drawable/round_corners"
-        android:src="@drawable/google_logo"
-        app:layout_constraintBottom_toBottomOf="@+id/imbtnGithub"
+    <Button
+        android:id="@+id/btnAboutDevFinder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_devfinder_text"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imbtnGithub"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageButton
-        android:id="@+id/imbtnGithub"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="52dp"
-        android:background="@drawable/round_corners"
-        android:src="@drawable/github_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.821"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/imbtnGoogle"
+        />
 
     <ImageButton
         android:id="@+id/imbtnTwitter"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="@dimen/login_btn_size"
+        android:layout_height="@dimen/login_btn_size"
+        android:layout_marginStart="@dimen/login_btn_group_marginHorizontal"
         android:background="@drawable/round_corners"
+        android:contentDescription="@string/login_twitter_desc"
         android:src="@drawable/logo_twitter"
         app:layout_constraintBottom_toBottomOf="@+id/imbtnGoogle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintEnd_toStartOf="@id/imbtnGoogle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLogin"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/imbtnGithub"
+        />
 
+    <ImageButton
+        android:id="@+id/imbtnGoogle"
+        android:layout_width="@dimen/login_btn_size"
+        android:layout_height="@dimen/login_btn_size"
+        android:background="@drawable/round_corners"
+        android:contentDescription="@string/login_google_desc"
+        android:src="@drawable/google_logo"
+        app:layout_constraintLeft_toRightOf="@id/imbtnTwitter"
+        app:layout_constraintRight_toLeftOf="@id/imbtnGithub"
+        app:layout_constraintTop_toTopOf="@id/imbtnGithub"
+        />
+
+    <ImageButton
+        android:id="@+id/imbtnGithub"
+        android:layout_width="@dimen/login_btn_size"
+        android:layout_height="@dimen/login_btn_size"
+        android:layout_marginTop="@dimen/login_btn_marginTop"
+        android:layout_marginEnd="@dimen/login_btn_group_marginHorizontal"
+        android:background="@drawable/round_corners"
+        android:contentDescription="@string/login_github_desc"
+        android:src="@drawable/github_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imbtnGoogle"
+        app:layout_constraintTop_toBottomOf="@+id/tvLogin"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

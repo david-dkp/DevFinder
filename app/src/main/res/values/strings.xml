@@ -15,4 +15,9 @@
     <string name="chat_list_title">Chat</string>
     <string name="enter_message_placeholder">Enter a message</string>
     <string name="send_btn_desc">Send the message</string>
+    <string name="login_with_text">Login with</string>
+    <string name="about_devfinder_text">About DevFinder</string>
+    <string name="login_google_desc">A Google account</string>
+    <string name="login_twitter_desc">A Twitter account</string>
+    <string name="login_github_desc">A GitHub account</string>
 </resources>

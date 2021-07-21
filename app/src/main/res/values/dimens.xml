@@ -20,4 +20,12 @@
     <dimen name="chat_et_paddingHorizontal">20dp</dimen>
     <dimen name="chat_message_section_gap">8dp</dimen>
     <dimen name="chat_rv_paddingVertical">10dp</dimen>
+    <dimen name="chat_et_message_maxHeight">250dp</dimen>
+    <dimen name="chat_message_textSize">21sp</dimen>
+    <dimen name="chat_message_paddingHorizontal">10dp</dimen>
+    <dimen name="login_round_view_height">270dp</dimen>
+    <dimen name="login_app_name_marginTop">124dp</dimen>
+    <dimen name="login_btn_size">75dp</dimen>
+    <dimen name="login_btn_marginTop">52dp</dimen>
+    <dimen name="login_btn_group_marginHorizontal">15dp</dimen>
 </resources>
