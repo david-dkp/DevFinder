@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
+    >
+
+    <fr.feepin.devfinder.ui.customviews.StepProgressBarView
+        android:id="@+id/stepProgressBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/register_progressBar_marginHorizontal"
+        android:layout_marginTop="@dimen/register_progressBar_marginTop"
+        app:ballRadius="@dimen/stepProgressBar_ballRadius"
+        app:indicatorColor="?attr/colorOnPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_max="@dimen/register_progressBar_maxWidth"
+        app:step="3"
+        app:trackColor="?attr/colorPrimaryVariant"
+        app:trackPadding="@dimen/stepProgressBar_trackPadding"
+        />
+
+    <TextView
+        android:id="@+id/tvWhatLevel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/register_element_marginHorizontal"
+        android:layout_marginTop="@dimen/register_elements_vertical_gap"
+        android:text="@string/register_what_level_text"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.DevFinder.Headline5.Light"
+        android:textColor="?attr/colorOnPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stepProgressBar"
+        />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_marginHorizontal="@dimen/register_level_btn_marginHorizontal"
+        android:id="@+id/flowLevels"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:constraint_referenced_ids="btnBeginner,btnIntermediate,btnAdvance"
+        app:layout_constraintBottom_toTopOf="@id/btnNext"
+        app:layout_constraintLeft_toLeftOf="@id/tvWhatLevel"
+        app:layout_constraintRight_toRightOf="@id/tvWhatLevel"
+        app:layout_constraintTop_toBottomOf="@id/tvWhatLevel"
+        app:flow_verticalGap="@dimen/register_elements_vertical_gap"
+        android:orientation="vertical"
+        android:layout_marginVertical="@dimen/register_elements_vertical_gap"
+        />
+
+    <Button
+        android:id="@+id/btnBeginner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/beginner_btn_text"
+        android:textSize="@dimen/register_level_btn_textSize"
+        />
+
+    <Button
+        android:id="@+id/btnIntermediate"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/intermediate_btn_text"
+        android:textSize="@dimen/register_level_btn_textSize"
+        />
+
+    <Button
+        android:id="@+id/btnAdvance"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/advance_btn_text"
+        android:textSize="@dimen/register_level_btn_textSize"
+        />
+
+    <include layout="@layout/register_next_button_include" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

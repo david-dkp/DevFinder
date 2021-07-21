@@ -7,4 +7,17 @@
     <dimen name="register_next_button_marginRight">20dp</dimen>
     <dimen name="register_next_button_marginBottom">10dp</dimen>
     <dimen name="register_elements_vertical_gap">30dp</dimen>
+    <dimen name="stepProgressBar_ballRadius">13dp</dimen>
+    <dimen name="stepProgressBar_trackPadding">3dp</dimen>
+    <dimen name="register_technologies_elements_vertical_gap">70dp</dimen>
+    <dimen name="register_level_btn_marginHorizontal">20dp</dimen>
+    <dimen name="register_level_btn_textSize">26sp</dimen>
+    <dimen name="toolbar_profile_picture_padding">5dp</dimen>
+    <dimen name="chat_toolbar_friend_username_marginRight">20dp</dimen>
+    <dimen name="chat_toolbar_friend_username_marginLeft">10dp</dimen>
+    <dimen name="chat_et_message_minHeight">52dp</dimen>
+    <dimen name="chat_send_btn_padding">16dp</dimen>
+    <dimen name="chat_et_paddingHorizontal">20dp</dimen>
+    <dimen name="chat_message_section_gap">8dp</dimen>
+    <dimen name="chat_rv_paddingVertical">10dp</dimen>
 </resources>
