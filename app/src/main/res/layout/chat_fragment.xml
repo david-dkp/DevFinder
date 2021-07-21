@@ -54,9 +54,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/chat_message_section_gap"
+        android:paddingVertical="@dimen/chat_rv_paddingVertical"
         app:layout_constraintBottom_toTopOf="@id/etMessage"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        android:paddingVertical="@dimen/chat_rv_paddingVertical"
         />
 
     <EditText
@@ -70,11 +70,13 @@
         android:hint="@string/enter_message_placeholder"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
-        android:minHeight="@dimen/chat_et_message_minHeight"
         android:paddingHorizontal="@dimen/chat_et_paddingHorizontal"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_max="@dimen/chat_et_message_maxHeight"
+        app:layout_constraintHeight_min="@dimen/chat_et_message_minHeight"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/btnSend"
+        android:overScrollMode="always"
         />
 
     <com.google.android.material.imageview.ShapeableImageView
