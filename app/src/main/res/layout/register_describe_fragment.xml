@@ -98,16 +98,6 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/btnNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/register_next_button_marginRight"
-        android:layout_marginBottom="@dimen/register_next_button_marginBottom"
-        android:drawableEnd="@drawable/ic_arrow_forward"
-        android:text="@string/next_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        />
+    <include layout="@layout/register_next_button_include" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

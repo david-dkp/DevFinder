@@ -7,4 +7,8 @@
     <string name="bio_hint">Bio…</string>
     <string name="register_what_technologies_text">What technologies are you using ?</string>
     <string name="technologies_placeholder">Java, Android…</string>
+    <string name="beginner_btn_text">I\'m a beginner</string>
+    <string name="intermediate_btn_text">I\'m an intermediate</string>
+    <string name="advance_btn_text">I\'m at advance level</string>
+    <string name="register_what_level_text">What\'s your level ?</string>
 </resources>

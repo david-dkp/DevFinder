@@ -2,6 +2,7 @@
 <resources>
     <style name="TextAppearance.DevFinder.Headline5.Light" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="fontWeight">300</item>
+        <item name="android:textSize">28sp</item>
     </style>
 
     <style name="Widget.DevFinder.Button" parent="Widget.MaterialComponents.Button">
@@ -28,4 +29,6 @@
     <style name="ShapeAppearance.DevFinder.TextInputLayout" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerSize">30dp</item>
     </style>
+
+    
 </resources>
