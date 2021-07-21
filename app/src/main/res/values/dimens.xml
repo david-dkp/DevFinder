@@ -28,4 +28,5 @@
     <dimen name="login_btn_size">75dp</dimen>
     <dimen name="login_btn_marginTop">52dp</dimen>
     <dimen name="login_btn_group_marginHorizontal">15dp</dimen>
+    <dimen name="chat_message_time_margin">4dp</dimen>
 </resources>
