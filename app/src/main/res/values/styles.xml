@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="TextAppearance.DevFinder.Headline5.Light" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="fontWeight">300</item>
         <item name="android:textSize">28sp</item>
@@ -9,12 +10,12 @@
         <item name="textAllCaps">false</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.DevFinder.Button</item>
         <item name="shapeAppearance">@style/ShapeAppearance.DevFinder.Button</item>
-        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline5</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline5
+        </item>
     </style>
 
     <style name="ThemeOverlay.DevFinder.Button" parent="">
         <item name="colorPrimary">?attr/colorPrimaryVariant</item>
-        <item name="colorOnSecondary">?attr/colorOnPrimary</item>
         <item name="colorControlNormal">?attr/colorOnPrimary</item>
     </style>
 
@@ -30,5 +31,8 @@
         <item name="cornerSize">30dp</item>
     </style>
 
-    
+    <style name="ShapeAppearanceOverlay.DevFinder.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>

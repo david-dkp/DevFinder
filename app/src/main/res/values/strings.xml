@@ -13,4 +13,6 @@
     <string name="register_what_level_text">What\'s your level ?</string>
     <string name="project_list_title">Projects</string>
     <string name="chat_list_title">Chat</string>
+    <string name="enter_message_placeholder">Enter a message</string>
+    <string name="send_btn_desc">Send the message</string>
 </resources>
