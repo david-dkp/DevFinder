@@ -11,4 +11,6 @@
     <string name="intermediate_btn_text">I\'m an intermediate</string>
     <string name="advance_btn_text">I\'m at advance level</string>
     <string name="register_what_level_text">What\'s your level ?</string>
+    <string name="project_list_title">Projects</string>
+    <string name="chat_list_title">Chat</string>
 </resources>
