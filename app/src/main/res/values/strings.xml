@@ -20,4 +20,5 @@
     <string name="login_google_desc">A Google account</string>
     <string name="login_twitter_desc">A Twitter account</string>
     <string name="login_github_desc">A GitHub account</string>
+    <string name="chat_with_user_desc">Chat with the user.</string>
 </resources>
