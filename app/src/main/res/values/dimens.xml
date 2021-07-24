@@ -44,5 +44,9 @@
     <dimen name="profile_technologies_item_paddingVertical">5dp</dimen>
     <dimen name="profile_technologies_item_paddingHorizontal">10dp</dimen>
     <dimen name="toolbar_profile_picture_marginRight">16dp</dimen>
+    <dimen name="chat_list_item_height">90dp</dimen>
+    <dimen name="chat_list_item_profile_picture_padding">13dp</dimen>
+    <dimen name="chat_list_item_online_indicator_size">15dp</dimen>
+    <dimen name="chat_list_item_online_indicator_marginLeft">5dp</dimen>
 
 </resources>
