@@ -41,5 +41,8 @@
     <dimen name="profile_rvTechnologies_padding">10dp</dimen>
     <dimen name="profile_rvProjects_padding">10dp</dimen>
     <dimen name="profile_rvProjects_height">300dp</dimen>
+    <dimen name="profile_technologies_item_paddingVertical">5dp</dimen>
+    <dimen name="profile_technologies_item_paddingHorizontal">10dp</dimen>
+    <dimen name="toolbar_profile_picture_marginRight">16dp</dimen>
 
 </resources>
