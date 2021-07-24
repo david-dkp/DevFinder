@@ -38,5 +38,8 @@
     <dimen name="profile_name_marginBottom">5dp</dimen>
     <dimen name="profile_chat_button_padding">20dp</dimen>
     <dimen name="profile_elements_vertical_gap">20dp</dimen>
+    <dimen name="profile_rvTechnologies_padding">10dp</dimen>
+    <dimen name="profile_rvProjects_padding">10dp</dimen>
+    <dimen name="profile_rvProjects_height">300dp</dimen>
 
 </resources>
