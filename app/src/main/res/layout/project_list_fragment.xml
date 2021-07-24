@@ -47,4 +47,15 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabPostProject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/project_list_fab_margin"
+        android:contentDescription="@string/add_project_desc"
+        android:src="@drawable/ic_add"
+        app:layout_behavior="com.google.android.material.floatingactionbutton.FloatingActionButton$Behavior"
+        />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

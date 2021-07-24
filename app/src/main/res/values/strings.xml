@@ -23,4 +23,6 @@
     <string name="chat_with_user_desc">Chat with the user.</string>
     <string name="technologies_text">Technologies</string>
     <string name="projects_text">Projects</string>
+    <string name="loginFragment_label">Login</string>
+    <string name="add_project_desc">Post a project</string>
 </resources>

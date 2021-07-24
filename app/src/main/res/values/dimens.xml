@@ -48,5 +48,6 @@
     <dimen name="chat_list_item_profile_picture_padding">13dp</dimen>
     <dimen name="chat_list_item_online_indicator_size">15dp</dimen>
     <dimen name="chat_list_item_online_indicator_marginLeft">5dp</dimen>
+    <dimen name="project_list_fab_margin">28dp</dimen>
 
 </resources>
