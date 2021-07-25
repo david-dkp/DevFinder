@@ -5,7 +5,7 @@ import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.PropertyName
 
 data class Project(
-    @DocumentId val id: String,
+    @DocumentId val id: String? = null,
     @PropertyName("user_id") val userId: String,
     val username: String,
     @PropertyName("profile_picture_url") val profilePictureUrl: String,

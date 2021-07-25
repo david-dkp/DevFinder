@@ -5,7 +5,7 @@ import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.PropertyName
 
 data class Message(
-    @DocumentId val id: String,
+    @DocumentId val id: String? = null,
     @PropertyName("sender_user_id") val senderUserId: String,
     @PropertyName("receiver_user_id") val receiverUserId: String,
     val message: String,
