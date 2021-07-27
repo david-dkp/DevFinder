@@ -6,6 +6,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.sendBlocking
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +18,7 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
-class AuthManager @Inject constructor(coroutineScope: CoroutineScope) {
+class AuthManager @Inject constructor() {
 
     @ExperimentalCoroutinesApi
     private val currentUserFlow = callbackFlow {
@@ -38,7 +39,7 @@ class AuthManager @Inject constructor(coroutineScope: CoroutineScope) {
     val authState: StateFlow<AuthState> = _authState
 
     init {
-        coroutineScope.launch {
+        GlobalScope.launch {
             currentUserFlow.collect { firebaseUser ->
                 _authState.value = firebaseUser?.let {
                     AuthState.Authenticated(it.uid)
@@ -51,7 +52,7 @@ class AuthManager @Inject constructor(coroutineScope: CoroutineScope) {
      * Used to sign in with firebase with an [authCredential]
      * @return an [AuthResult] that state whether the login process has succeeded or not.
      */
-    suspend fun signInWithCredentials(authCredential: AuthCredential): AuthResult {
+    suspend fun signInWithCredential(authCredential: AuthCredential): AuthResult {
         _authState.value = AuthState.Authenticating
 
         return try {

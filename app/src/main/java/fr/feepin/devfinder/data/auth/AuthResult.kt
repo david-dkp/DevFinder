@@ -4,5 +4,5 @@ import java.lang.Exception
 
 sealed class AuthResult {
     class Success(val uid: String, val newUser: Boolean) : AuthResult()
-    class Failed(exception: Exception) : AuthResult()
+    class Failed(val exception: Exception) : AuthResult()
 }
