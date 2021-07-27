@@ -1,4 +1,4 @@
-package fr.feepin.devfinder.data
+package fr.feepin.devfinder.data.repos
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

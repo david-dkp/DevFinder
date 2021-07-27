@@ -1,4 +1,4 @@
-package fr.feepin.devfinder.data
+package fr.feepin.devfinder.data.repos
 
 import fr.feepin.devfinder.data.models.User
 import kotlinx.coroutines.flow.Flow
