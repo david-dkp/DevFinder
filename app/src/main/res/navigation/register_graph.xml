@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/register_graph"
+    app:startDestination="@id/registerDescribeFragment">
+
+    <fragment
+        android:id="@+id/registerDescribeFragment"
+        android:name="fr.feepin.devfinder.ui.register.RegisterDescribeFragment"
+        android:label="RegisterDescribeFragment" >
+        <action
+            android:id="@+id/action_registerDescribeFragment_to_registerTechnologiesFragment"
+            app:destination="@id/registerTechnologiesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerLevelFragment"
+        android:name="fr.feepin.devfinder.ui.register.RegisterLevelFragment"
+        android:label="RegisterLevelFragment" />
+    <fragment
+        android:id="@+id/registerTechnologiesFragment"
+        android:name="fr.feepin.devfinder.ui.register.RegisterTechnologiesFragment"
+        android:label="RegisterTechnologiesFragment" >
+        <action
+            android:id="@+id/action_registerTechnologiesFragment_to_registerLevelFragment"
+            app:destination="@id/registerLevelFragment" />
+    </fragment>
+</navigation>

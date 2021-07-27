@@ -41,7 +41,6 @@
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintLeft_toRightOf="@id/tvName"
         app:layout_constraintRight_toLeftOf="@id/tvLastTimeMessage"
-        app:layout_constraintRight_toRightOf=""
         app:layout_constraintTop_toTopOf="@id/tvName"
         />
 

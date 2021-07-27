@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        style="@style/Widget.MaterialComponents.AppBarLayout.Surface"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:liftOnScroll="true"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|enterAlways"
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/project_padding"
+                android:textAppearance="?attr/textAppearanceHeadline4"
+                android:textColor="?attr/colorOnSurface"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="A simple DiscordBot that can manage games and rôleplay"
+                />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivProfilePicture"
+                android:layout_width="@dimen/project_profile_picture_size"
+                android:layout_height="@dimen/project_profile_picture_size"
+                android:layout_marginTop="@dimen/project_elements_vertical_gap"
+                app:layout_constraintLeft_toLeftOf="@id/tvTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.DevFinder.CornerSize50Percent"
+                />
+
+            <TextView
+                android:id="@+id/tvUsername"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/project_username_marginLeft"
+                android:layout_marginEnd="@dimen/project_padding"
+                android:textAppearance="?attr/textAppearanceHeadline5"
+                app:layout_constraintBottom_toBottomOf="@id/ivProfilePicture"
+                app:layout_constraintLeft_toRightOf="@id/ivProfilePicture"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ivProfilePicture"
+                tools:text="FeepIn"
+                />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/project_padding"
+                android:layout_marginTop="@dimen/project_elements_vertical_gap"
+                android:textAppearance="?attr/textAppearanceHeadline5"
+                app:layout_constraintTop_toBottomOf="@id/ivProfilePicture"
+                tools:text="This DiscordBot will be open source and ultra modularized. Everyone will be able to personnalize that bot for their server in code, or with no-code using a tool that I've built. This bot is powered by Tom's AI, a company that offers AI API. What I wanna do now it's to start developing the framework for creating the modules. It should be easy for developers as well for our no-code coders"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

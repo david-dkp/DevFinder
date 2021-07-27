@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_nav_graph">
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/projectListFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="fr.feepin.devfinder.ui.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_projectListFragment"
+            app:destination="@id/projectListFragment"
+            app:popUpTo="@+id/loginFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/projectListFragment"
+        android:name="fr.feepin.devfinder.ui.projectlist.ProjectListFragment"
+        android:label="ProjectListFragment" />
+    <fragment
+        android:id="@+id/chatListFragment"
+        android:name="fr.feepin.devfinder.ui.chatlist.ChatListFragment"
+        android:label="ChatListFragment" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="fr.feepin.devfinder.ui.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+
+    <include
+        android:id="@+id/register"
+        app:graph="@navigation/register_graph" />
+
+    <action
+        android:id="@+id/action_to_profileFragment"
+        app:destination="@id/profileFragment" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="fr.feepin.devfinder.ui.chat.ChatFragment"
+        android:label="ChatFragment" >
+        <argument
+            android:name="chatId"
+            app:argType="string" />
+    </fragment>
+    <action
+        android:id="@+id/action_to_chatFragment"
+        app:destination="@id/chatFragment" />
 
 </navigation>
