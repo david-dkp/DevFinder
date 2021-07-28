@@ -53,5 +53,9 @@
     <dimen name="project_profile_picture_size">45dp</dimen>
     <dimen name="project_elements_vertical_gap">10dp</dimen>
     <dimen name="project_username_marginLeft">8dp</dimen>
+    <dimen name="add_project_padding">12dp</dimen>
+    <dimen name="add_project_elements_vertical_gap">10dp</dimen>
+    <dimen name="add_project_description_height">200dp</dimen>
+    <dimen name="add_project_technologies_height">100dp</dimen>
 
 </resources>

@@ -43,7 +43,7 @@
         android:id="@+id/rvProjects"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_surface_70"
+        android:backgroundTint="@color/color_surface_70"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         />
 
