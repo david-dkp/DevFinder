@@ -11,5 +11,6 @@ data class User(
     val technologies: List<String>,
     val username: String,
     val bio: String,
-    @PropertyName("creation_ts") val creationTs: Timestamp
+    @PropertyName("creation_ts") val creationTs: Timestamp,
+    val chatsIdList: List<String>
 )
