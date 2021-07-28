@@ -7,8 +7,11 @@ import com.google.firebase.ktx.Firebase
 import fr.feepin.devfinder.data.models.Chat
 import fr.feepin.devfinder.data.models.Message
 import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class AppChatRepository : ChatRepository {
+@Singleton
+class AppChatRepository @Inject constructor() : ChatRepository {
 
     private val firestore = Firebase.firestore
     private val chatsCollectionRef = firestore.collection("chats")
