@@ -74,6 +74,9 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$play_coroutines_version"
     implementation "com.google.android.gms:play-services-auth:$play_services_auth_version"
 
+    //FirebaseUI
+    implementation "com.firebaseui:firebase-ui-firestore:$firebaseui_version"
+
     //Paging 3
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 }
