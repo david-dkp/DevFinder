@@ -24,7 +24,7 @@ class AuthManager @Inject constructor() {
     private val currentUserFlow = callbackFlow {
 
         val listener: (FirebaseAuth) -> Unit = {
-            sendBlocking(it.currentUser)
+            trySend(it.currentUser)
         }
 
         Firebase.auth.addAuthStateListener(listener)
@@ -35,14 +35,14 @@ class AuthManager @Inject constructor() {
     }
 
     private val _authState: MutableStateFlow<AuthState> =
-        MutableStateFlow(AuthState.Unauthenticated)
+        MutableStateFlow(AuthState.Authenticating)
     val authState: StateFlow<AuthState> = _authState
 
     init {
         GlobalScope.launch {
             currentUserFlow.collect { firebaseUser ->
                 _authState.value = firebaseUser?.let {
-                    AuthState.Authenticated(it.uid)
+                    AuthState.Authenticated(it.uid, it.photoUrl.toString())
                 } ?: AuthState.Unauthenticated
             }
         }
@@ -61,7 +61,7 @@ class AuthManager @Inject constructor() {
                 firebaseAuthResult.user!!.uid,
                 firebaseAuthResult?.additionalUserInfo?.isNewUser ?: true
             )
-            _authState.value = AuthState.Authenticated(authResult.uid)
+            _authState.value = AuthState.Authenticated(authResult.uid, firebaseAuthResult.user?.photoUrl.toString())
 
             authResult
         } catch (e: Exception) {
@@ -73,6 +73,10 @@ class AuthManager @Inject constructor() {
 
     fun signOut() {
         Firebase.auth.signOut()
+    }
+
+    suspend fun deleteUser() {
+        Firebase.auth.currentUser?.delete()?.await()
     }
 
 }
