@@ -9,4 +9,6 @@ interface ProjectRepository {
     suspend fun fetchProjectsByTechnologies(technologies: List<String>): List<Project>
 
     suspend fun addProject(userId: String, project: Project)
+
+    suspend fun fetchProjectById(projectId: String): Project?
 }

@@ -1,5 +1,6 @@
 package fr.feepin.devfinder.data.repos
 
+import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import fr.feepin.devfinder.data.models.Project
@@ -34,5 +35,15 @@ class AppProjectRepository @Inject constructor() : ProjectRepository {
             .document(userId)
             .collection("projects")
             .add(project)
+    }
+
+    override suspend fun fetchProjectById(projectId: String): Project? {
+        return projectsCollectionRef
+            .whereEqualTo(FieldPath.documentId(), projectId)
+            .limit(1)
+            .get()
+            .await()
+            .toObjects(Project::class.java)
+            .firstOrNull()
     }
 }
