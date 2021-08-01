@@ -12,10 +12,21 @@
             android:id="@+id/action_registerDescribeFragment_to_registerTechnologiesFragment"
             app:destination="@id/registerTechnologiesFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/registerLevelFragment"
         android:name="fr.feepin.devfinder.ui.register.RegisterLevelFragment"
-        android:label="RegisterLevelFragment" />
+        android:label="RegisterLevelFragment">
+
+        <action
+            android:id="@+id/action_registerLevelFragment_to_projectListFragment"
+            app:destination="@+id/mainNavigation"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"
+            />
+
+    </fragment>
+
     <fragment
         android:id="@+id/registerTechnologiesFragment"
         android:name="fr.feepin.devfinder.ui.register.RegisterTechnologiesFragment"

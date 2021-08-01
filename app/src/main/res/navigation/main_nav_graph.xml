@@ -5,47 +5,74 @@
     app:startDestination="@id/projectListFragment">
 
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="fr.feepin.devfinder.ui.login.LoginFragment"
-        android:label="LoginFragment" >
+        android:id="@+id/profileFragment"
+        android:name="fr.feepin.devfinder.ui.profile.ProfileFragment"
+        android:label="ProfileFragment">
+
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="false" />
         <action
-            android:id="@+id/action_loginFragment_to_projectListFragment"
-            app:destination="@id/projectListFragment"
-            app:popUpTo="@+id/loginFragment"
-            app:popUpToInclusive="true"/>
+            android:id="@+id/action_profileFragment_to_projectFragment"
+            app:destination="@id/projectFragment" />
+
     </fragment>
 
+    <action
+        android:id="@+id/action_to_profileFragment"
+        app:destination="@id/profileFragment" />
+
     <fragment
-        android:id="@+id/projectListFragment"
-        android:name="fr.feepin.devfinder.ui.projectlist.ProjectListFragment"
-        android:label="ProjectListFragment" />
+        android:id="@+id/chatFragment"
+        android:name="fr.feepin.devfinder.ui.chat.ChatFragment"
+        android:label="ChatFragment">
+
+        <argument
+            android:name="chatId"
+            app:argType="string"
+            app:nullable="false" />
+
+    </fragment>
+    <action
+        android:id="@+id/action_to_chatFragment"
+        app:destination="@id/chatFragment" />
+
+
     <fragment
         android:id="@+id/chatListFragment"
         android:name="fr.feepin.devfinder.ui.chatlist.ChatListFragment"
         android:label="ChatListFragment" />
 
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="fr.feepin.devfinder.ui.profile.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:id="@+id/projectListFragment"
+        android:name="fr.feepin.devfinder.ui.projectlist.ProjectListFragment"
+        android:label="ProjectListFragment">
 
-    <include
-        android:id="@+id/register"
-        app:graph="@navigation/register_graph" />
+        <action
+            android:id="@+id/action_global_projectFragment"
+            app:destination="@id/projectFragment" />
 
-    <action
-        android:id="@+id/action_to_profileFragment"
-        app:destination="@id/profileFragment" />
-    <fragment
-        android:id="@+id/chatFragment"
-        android:name="fr.feepin.devfinder.ui.chat.ChatFragment"
-        android:label="ChatFragment" >
-        <argument
-            android:name="chatId"
-            app:argType="string" />
     </fragment>
+
     <action
-        android:id="@+id/action_to_chatFragment"
-        app:destination="@id/chatFragment" />
+        android:id="@+id/action_global_addProjectFragment"
+        app:destination="@id/addProjectFragment" />
+
+    <fragment
+        android:id="@+id/projectFragment"
+        android:name="fr.feepin.devfinder.ui.project.ProjectFragment"
+        android:label="ProjectFragment">
+
+        <argument
+            android:name="projectId"
+            app:argType="string"
+            app:nullable="false" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/addProjectFragment"
+        android:name="fr.feepin.devfinder.ui.addproject.AddProjectFragment"
+        android:label="AddProjectFragment" />
 
 </navigation>
