@@ -16,10 +16,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import fr.feepin.devfinder.R
 import fr.feepin.devfinder.activitycontracts.GoogleSignInActivityContract
 import fr.feepin.devfinder.databinding.LoginFragmentBinding
-import kotlinx.coroutines.tasks.await
 
 @AndroidEntryPoint
-class LoginFragment : Fragment(R.layout.login_fragment){
+class LoginFragment : Fragment(R.layout.login_fragment) {
 
     private var binding: LoginFragmentBinding? = null
 
@@ -39,18 +38,44 @@ class LoginFragment : Fragment(R.layout.login_fragment){
     }
 
     private fun renderUi(loginState: LoginState) {
-        when(loginState) {
-            is LoginState.Success -> navigateToMainFragment()
-            is LoginState.Loading -> binding?.scrim?.visibility = View.VISIBLE
+        when (loginState) {
+            is LoginState.Success -> {
+                toggleLoading(false)
+                if (loginState.newUser) {
+                    navigateToRegister()
+                } else {
+                    navigateToMainFragment()
+                }
+            }
+            is LoginState.Loading -> {
+                toggleLoading(true)
+
+            }
             is LoginState.Error -> {
-                binding?.scrim?.visibility = View.INVISIBLE
+                toggleLoading(false)
                 Toast.makeText(requireContext(), loginState.message, Toast.LENGTH_LONG).show()
             }
         }
     }
 
+    private fun toggleLoading(loading: Boolean) {
+        if (loading) {
+            binding?.scrim?.visibility = View.VISIBLE
+            binding?.btnAboutDevFinder?.isEnabled = false
+        } else {
+            binding?.scrim?.visibility = View.INVISIBLE
+            binding?.btnAboutDevFinder?.isEnabled = true
+        }
+    }
+
+    private fun navigateToRegister() {
+        val actionToRegisterGraph = LoginFragmentDirections.actionLoginFragmentToRegisterGraph()
+        findNavController().navigate(actionToRegisterGraph)
+    }
+
     private fun navigateToMainFragment() {
-        val actionToProjectListFragment = LoginFragmentDirections.actionLoginFragmentToProjectListFragment()
+        val actionToProjectListFragment =
+            LoginFragmentDirections.actionLoginFragmentToProjectListFragment()
         findNavController().navigate(actionToProjectListFragment)
     }
 
@@ -64,14 +89,17 @@ class LoginFragment : Fragment(R.layout.login_fragment){
 
     private fun setupListeners() {
         binding?.imbtnGoogle?.setOnClickListener {
+            viewModel.onStartLogin()
             signInWithGoogle()
         }
 
         binding?.imbtnGithub?.setOnClickListener {
+            viewModel.onStartLogin()
             signInWithGithub()
         }
 
         binding?.imbtnTwitter?.setOnClickListener {
+            viewModel.onStartLogin()
             signInWithTwitter()
         }
 
@@ -107,9 +135,13 @@ class LoginFragment : Fragment(R.layout.login_fragment){
     }
 
     private fun startActivityForProvider(provider: OAuthProvider) {
-        Firebase.auth.startActivityForSignInWithProvider(requireActivity(), provider).addOnSuccessListener {
-            viewModel.onAuthCredential(it.credential)
-        }
+        Firebase.auth.startActivityForSignInWithProvider(requireActivity(), provider)
+            .addOnSuccessListener {
+                viewModel.onAuthCredential(it.credential)
+            }
+            .addOnFailureListener {
+                viewModel.onLoginError(it)
+            }
     }
 
 }

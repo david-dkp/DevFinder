@@ -16,6 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.lang.Exception
 import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
@@ -23,8 +24,7 @@ import javax.inject.Inject
 class LoginViewModel
 @Inject constructor(
     @ApplicationContext val context: Context,
-    val authManager: AuthManager,
-    val userRepository: UserRepository
+    private val authManager: AuthManager
 ) : ViewModel() {
 
     private val _loginState = MutableLiveData<LoginState>()
@@ -51,13 +51,17 @@ class LoginViewModel
 
     private fun updateViewState(result: AuthResult) {
         _loginState.value = when (result) {
-            is AuthResult.Success -> LoginState.Success
+            is AuthResult.Success -> LoginState.Success(result.newUser)
             is AuthResult.Failed ->
                 LoginState.Error(
                     result.exception.localizedMessage
                         ?: context.getString(R.string.auth_error_message)
                 )
         }
+    }
+
+    fun onLoginError(e: Exception) {
+        _loginState.value = LoginState.Error(e.localizedMessage ?: context.getString(R.string.auth_error_message))
     }
 
 }
