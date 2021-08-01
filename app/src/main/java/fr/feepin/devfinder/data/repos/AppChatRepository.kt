@@ -15,7 +15,6 @@ class AppChatRepository @Inject constructor() : ChatRepository {
 
     private val firestore = Firebase.firestore
     private val chatsCollectionRef = firestore.collection("chats")
-    private val usersCollectionRef = firestore.collection("users")
 
     override suspend fun fetchChatsByIds(chatsIdList: List<String>): List<Chat> {
         return chatsCollectionRef
@@ -35,6 +34,14 @@ class AppChatRepository @Inject constructor() : ChatRepository {
             .await()
             .toObjects(Message::class.java)
             .firstOrNull()
+    }
+
+    override suspend fun fetchChatById(chatId: String): Chat? {
+        return chatsCollectionRef
+            .document(chatId)
+            .get()
+            .await()
+            .toObject(Chat::class.java)
     }
 
     override suspend fun addChat(chat: Chat) {

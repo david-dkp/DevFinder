@@ -9,6 +9,8 @@ import fr.feepin.devfinder.data.models.Message
 interface ChatRepository {
     suspend fun fetchChatsByIds(chatsIdList: List<String>): List<Chat>
     suspend fun fetchLastMessageFromChatId(chatId: String): Message?
+    suspend fun fetchChatById(chatId: String): Chat?
+
     suspend fun addChat(chat: Chat)
 
     fun getMessagesQuery(chatId: String): Query
