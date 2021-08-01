@@ -24,6 +24,7 @@
     <string name="technologies_text">Technologies</string>
     <string name="projects_text">Projects</string>
     <string name="loginFragment_label">Login</string>
+    <string name="body_text">If you have any doubt related to app development ask David</string>
     <string name="add_project_desc">Post a project</string>
     <string name="auth_error_message">Something went wrong when signing in.</string>
     <string name="devfinder_description_text">DevFinder is an app that helps you to find a collaborator to work on a project together. Propose your project or find a project you find interesting.</string>
