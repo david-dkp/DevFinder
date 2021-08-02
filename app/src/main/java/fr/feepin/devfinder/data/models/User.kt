@@ -1,8 +1,8 @@
 package fr.feepin.devfinder.data.models
 
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.PropertyName
-import java.sql.Timestamp
 
 data class User(
     @DocumentId val id: String? = null,

@@ -5,6 +5,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import fr.feepin.devfinder.data.auth.AuthManager
+import fr.feepin.devfinder.data.models.Status
 import fr.feepin.devfinder.data.models.User
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.awaitClose
@@ -61,4 +62,11 @@ class AppUserRepository @Inject constructor(val authManager: AuthManager) : User
     override suspend fun addUser(user: User) {
         userCollectionRef.add(user).await()
     }
+
+    override suspend fun setUserStatus(userId: String, status: Status) {
+        val statusCollectionRef = Firebase.firestore.collection("status")
+        statusCollectionRef.document(userId).set(status)
+    }
+
+
 }

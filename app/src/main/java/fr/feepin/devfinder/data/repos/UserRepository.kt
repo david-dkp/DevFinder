@@ -1,5 +1,6 @@
 package fr.feepin.devfinder.data.repos
 
+import fr.feepin.devfinder.data.models.Status
 import fr.feepin.devfinder.data.models.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
@@ -11,9 +12,11 @@ interface UserRepository {
     //To convert into flow: https://medium.com/swlh/callback-flows-in-android-d2c6ed5bc488
     fun getUser(): StateFlow<User?>
 
-    //Just get the User from the "users" collection by id
+    //Just get the User from the "users" collection by its id
     suspend fun fetchUserById(id: String): User?
 
     //Here I want to add the document User in the "users" collection.
     suspend fun addUser(user: User)
+
+    suspend fun setUserStatus(userId: String, status: Status)
 }
