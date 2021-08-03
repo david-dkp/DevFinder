@@ -96,4 +96,6 @@
 
     </androidx.core.widget.NestedScrollView>
 
+    <include android:id="@+id/scrim" layout="@layout/register_loading_scrim_include" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
