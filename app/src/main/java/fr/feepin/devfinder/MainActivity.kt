@@ -1,6 +1,7 @@
 package fr.feepin.devfinder
 
 import android.os.Bundle
+import android.transition.TransitionManager
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels

@@ -15,13 +15,15 @@ import fr.feepin.devfinder.data.repos.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 @HiltViewModel
-class AddProjectViewModel constructor(
-    @ApplicationContext val context: Context,
-    val userRepository: UserRepository,
-    val projectRepository: ProjectRepository
+class AddProjectViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
+    private val userRepository: UserRepository,
+    private val projectRepository: ProjectRepository
 ) : ViewModel(){
+
     private val _viewState: MutableLiveData<AddProjectViewState> = MutableLiveData()
     val viewState: LiveData<AddProjectViewState> = _viewState
 
@@ -44,28 +46,10 @@ class AddProjectViewModel constructor(
             return
         }
 
-        authManager.authState.value.uid?.let { uid ->
-            viewModelScope.launch(Dispatchers.IO) {
-                projectRepository.addProject(
-                    uid,
-                    Project(
-                        null,
-                        uid,
-
-                    )
-                )
-            }
-        }
-
     }
 
     private fun loadingState() {
-        _viewState.value = AddProjectViewState(
-            true,
-            "",
-            "",
-            ""
-        )
+
     }
 
 }

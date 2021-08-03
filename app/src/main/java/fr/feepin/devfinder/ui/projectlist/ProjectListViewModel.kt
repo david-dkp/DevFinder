@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import fr.feepin.devfinder.data.auth.AuthManager
 import fr.feepin.devfinder.data.models.Project
 import fr.feepin.devfinder.data.repos.ProjectRepository
 import kotlinx.coroutines.Dispatchers
@@ -31,5 +32,6 @@ class ProjectListViewModel @Inject constructor(
             }
         }
     }
+
 
 }
