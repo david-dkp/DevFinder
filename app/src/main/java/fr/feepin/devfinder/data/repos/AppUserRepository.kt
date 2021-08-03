@@ -65,8 +65,7 @@ class AppUserRepository @Inject constructor(val authManager: AuthManager) : User
 
     override suspend fun setUserStatus(userId: String, status: Status) {
         val statusCollectionRef = Firebase.firestore.collection("status")
-        statusCollectionRef.document(userId).set(status)
+        statusCollectionRef.document(userId).set(status).await()
     }
-
 
 }
