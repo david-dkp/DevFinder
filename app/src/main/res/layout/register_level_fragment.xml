@@ -44,7 +44,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:constraint_referenced_ids="btnBeginner,btnIntermediate,btnAdvance"
-        app:layout_constraintBottom_toTopOf="@id/btnNext"
+        app:layout_constraintBottom_toTopOf="@id/includeBtnNext"
         app:layout_constraintLeft_toLeftOf="@id/tvWhatLevel"
         app:layout_constraintRight_toRightOf="@id/tvWhatLevel"
         app:layout_constraintTop_toBottomOf="@id/tvWhatLevel"
@@ -77,6 +77,8 @@
         android:textSize="@dimen/register_level_btn_textSize"
         />
 
-    <include layout="@layout/register_next_button_include" />
+    <include android:id="@+id/includeBtnNext" layout="@layout/register_next_button_include" />
+
+    <include android:id="@+id/scrim" layout="@layout/register_loading_scrim_include" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

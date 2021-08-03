@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/registerDescribeFragment"
-        android:name="fr.feepin.devfinder.ui.register.RegisterDescribeFragment"
+        android:name="fr.feepin.devfinder.ui.register.describe.RegisterDescribeFragment"
         android:label="RegisterDescribeFragment" >
         <action
             android:id="@+id/action_registerDescribeFragment_to_registerTechnologiesFragment"
@@ -15,12 +15,12 @@
 
     <fragment
         android:id="@+id/registerLevelFragment"
-        android:name="fr.feepin.devfinder.ui.register.RegisterLevelFragment"
+        android:name="fr.feepin.devfinder.ui.register.level.RegisterLevelFragment"
         android:label="RegisterLevelFragment">
 
         <action
             android:id="@+id/action_registerLevelFragment_to_projectListFragment"
-            app:destination="@+id/mainNavigation"
+            app:destination="@+id/main_nav_graph"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true"
             />
@@ -29,10 +29,11 @@
 
     <fragment
         android:id="@+id/registerTechnologiesFragment"
-        android:name="fr.feepin.devfinder.ui.register.RegisterTechnologiesFragment"
+        android:name="fr.feepin.devfinder.ui.register.technologies.RegisterTechnologiesFragment"
         android:label="RegisterTechnologiesFragment" >
         <action
             android:id="@+id/action_registerTechnologiesFragment_to_registerLevelFragment"
             app:destination="@id/registerLevelFragment" />
     </fragment>
+    <include app:graph="@navigation/main_nav_graph" />
 </navigation>

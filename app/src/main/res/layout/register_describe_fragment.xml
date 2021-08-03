@@ -81,7 +81,7 @@
         android:layout_marginTop="@dimen/register_elements_vertical_gap"
         android:layout_marginBottom="@dimen/register_elements_vertical_gap"
         android:hint="@string/bio_hint"
-        app:layout_constraintBottom_toTopOf="@id/btnNext"
+        app:layout_constraintBottom_toTopOf="@id/includeBtnNext"
         app:layout_constraintLeft_toLeftOf="@id/tvWelcomeCommunity"
         app:layout_constraintRight_toRightOf="@id/tvWelcomeCommunity"
         app:layout_constraintTop_toBottomOf="@id/inputNickname"
@@ -98,6 +98,8 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <include layout="@layout/register_next_button_include" />
+    <include android:id="@+id/includeBtnNext" layout="@layout/register_next_button_include" />
+
+    <include android:id="@+id/scrim" layout="@layout/register_loading_scrim_include" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
