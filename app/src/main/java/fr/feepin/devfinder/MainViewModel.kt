@@ -13,14 +13,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val authManager: AuthManager,
+    authManager: AuthManager,
     private val userRepository: UserRepository
 ) : ViewModel() {
 
     val authState = authManager.authState
 
+    val userState = userRepository.getUser()
+
     fun userGoesOnline() {
-        authManager.authState.value.uid?.let {
+        authState.value.uid?.let {
             viewModelScope.launch(Dispatchers.IO) {
                 userRepository.setUserStatus(
                     it,
@@ -31,7 +33,7 @@ class MainViewModel @Inject constructor(
     }
 
     fun userGoesOffline() {
-        authManager.authState.value.uid?.let {
+        authState.value.uid?.let {
             viewModelScope.launch(Dispatchers.IO) {
                 userRepository.setUserStatus(
                     it,

@@ -1,6 +1,7 @@
 package fr.feepin.devfinder
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -8,11 +9,16 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import fr.feepin.devfinder.data.auth.AuthState
+import fr.feepin.devfinder.data.models.User
 import fr.feepin.devfinder.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener{
@@ -26,22 +32,50 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        lifecycleScope.launchWhenStarted {
+        setSupportActionBar(binding?.toolbar)
+
+        setupStateListeners()
+    }
+
+    private fun setupStateListeners() {
+        lifecycleScope.launch {
             viewModel.authState.collect {
                 if (it is AuthState.Unauthenticated) {
                     findNavController(R.id.fragmentContainerView).setGraph(R.navigation.login_graph)
                 }
             }
         }
+
+        lifecycleScope.launch(Dispatchers.Main) {
+            viewModel.userState.collect {
+                Log.d("debug", it?.toString() ?: "")
+                it?.let {
+                    updateUserUi(it)
+                }
+            }
+        }
+    }
+
+    private fun updateUserUi(user: User) {
+        Log.d("debug", user.toString())
+        binding?.apply {
+            Glide.with(this@MainActivity)
+                .load(user.profilePictureUrl)
+                .into(ivProfilePicture)
+        }
     }
 
     override fun onStart() {
         super.onStart()
+        setupBars()
+        viewModel.userGoesOnline()
+    }
+
+    private fun setupBars() {
         val navController = findNavController(R.id.fragmentContainerView)
         navController.addOnDestinationChangedListener(this)
         binding?.toolbar?.setupWithNavController(navController)
         binding?.botNav?.setupWithNavController(navController)
-        viewModel.userGoesOnline()
     }
 
     override fun onStop() {
@@ -56,7 +90,8 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         R.id.registerLevelFragment,
         R.id.registerTechnologiesFragment,
         R.id.chatFragment,
-        R.id.projectFragment
+        R.id.projectFragment,
+        R.id.addProjectFragment
     )
 
     override fun onDestinationChanged(

@@ -57,5 +57,11 @@
     <dimen name="add_project_elements_vertical_gap">10dp</dimen>
     <dimen name="add_project_description_height">200dp</dimen>
     <dimen name="add_project_technologies_height">100dp</dimen>
+    <dimen name="project_list_item_paddingVertical">12dp</dimen>
+    <dimen name="project_list_item_cornerRadius">18dp</dimen>
+    <dimen name="project_list_item_name_marginTop">10dp</dimen>
+    <dimen name="project_list_item_paddingHorizontal">18dp</dimen>
+    <dimen name="project_list_item_ivViewCount_marginRight">5dp</dimen>
+    <dimen name="project_list_item_marginHorizontal">15dp</dimen>
 
 </resources>

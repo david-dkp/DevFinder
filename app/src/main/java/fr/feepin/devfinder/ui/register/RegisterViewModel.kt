@@ -76,7 +76,7 @@ class RegisterViewModel @Inject constructor(
                         Timestamp.now(),
                         Collections.emptyList()
                     )
-                    userRepository.addUser(user)
+                    userRepository.addUser(authManager.authState.value.uid!!, user)
 
                     withContext(Dispatchers.Main) {
                         _viewState.value = RegisterViewState(false)

@@ -42,22 +42,22 @@
     <fragment
         android:id="@+id/chatListFragment"
         android:name="fr.feepin.devfinder.ui.chatlist.ChatListFragment"
-        android:label="ChatListFragment" />
+        android:label="@string/chat_list_title" />
 
     <fragment
         android:id="@+id/projectListFragment"
         android:name="fr.feepin.devfinder.ui.projectlist.ProjectListFragment"
-        android:label="ProjectListFragment">
+        android:label="@string/project_list_title">
 
         <action
             android:id="@+id/action_global_projectFragment"
             app:destination="@id/projectFragment" />
 
-    </fragment>
+        <action
+            android:id="@+id/action_projectListFragment_to_addProjectFragment"
+            app:destination="@id/addProjectFragment" />
 
-    <action
-        android:id="@+id/action_global_addProjectFragment"
-        app:destination="@id/addProjectFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/projectFragment"
