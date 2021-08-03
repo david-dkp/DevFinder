@@ -5,6 +5,6 @@ import com.google.firebase.firestore.PropertyName
 
 data class Chat(
     @DocumentId val id: String? = null,
-    @PropertyName("first_user_id") val firstUserId: String,
-    @PropertyName("second_user_id") val secondUserId: String,
+    val firstUserId: String,
+    val secondUserId: String,
 )

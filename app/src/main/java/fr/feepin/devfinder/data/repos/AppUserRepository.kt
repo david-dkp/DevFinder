@@ -9,6 +9,7 @@ import fr.feepin.devfinder.data.models.Status
 import fr.feepin.devfinder.data.models.User
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.channels.sendBlocking
 import kotlinx.coroutines.channels.trySendBlocking
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.tasks.await
@@ -24,12 +25,11 @@ class AppUserRepository @Inject constructor(val authManager: AuthManager) : User
 
     private val userFlow = authManager.authState
         .flatMapLatest {
-
             if (it.uid == null) {
                 return@flatMapLatest flowOf(null)
             }
 
-            val flow = callbackFlow<User> {
+            val flow = callbackFlow {
                 val userToListenToRef = userCollectionRef.document(it.uid)
                 val registration = userToListenToRef.addSnapshotListener { value, error ->
                     //value is a DocumentSnapshot but we want a Project here which is a data class so we convert it
@@ -37,8 +37,8 @@ class AppUserRepository @Inject constructor(val authManager: AuthManager) : User
                         Log.w(TAG, "listen:error", error)
                         return@addSnapshotListener
                     }
-                    val user = value?.toObject<User>()
-                    trySendBlocking(user!!)
+                    val user = value?.toObject(User::class.java)
+                    trySend(user)
                 }
                 //This method will prevent the flow from ending, we wanna end until the scope where this flow gets collected dies
                 awaitClose {
@@ -59,8 +59,8 @@ class AppUserRepository @Inject constructor(val authManager: AuthManager) : User
         return user
     }
 
-    override suspend fun addUser(user: User) {
-        userCollectionRef.add(user).await()
+    override suspend fun addUser(userId: String, user: User) {
+        userCollectionRef.document(userId).set(user).await()
     }
 
     override suspend fun setUserStatus(userId: String, status: Status) {
