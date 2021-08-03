@@ -68,4 +68,12 @@ class AppUserRepository @Inject constructor(val authManager: AuthManager) : User
         statusCollectionRef.document(userId).set(status).await()
     }
 
+    override suspend fun fetchUserStatus(userId: String): Status? {
+        return Firebase.firestore.collection("status")
+            .document(userId)
+            .get()
+            .await()
+            .toObject(Status::class.java)
+    }
+
 }

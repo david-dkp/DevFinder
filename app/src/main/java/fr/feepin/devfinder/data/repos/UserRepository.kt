@@ -19,4 +19,6 @@ interface UserRepository {
     suspend fun addUser(userId:String, user: User)
 
     suspend fun setUserStatus(userId: String, status: Status)
+
+    suspend fun fetchUserStatus(userId: String): Status?
 }
