@@ -29,11 +29,28 @@ class AddProjectFragment : Fragment(R.layout.add_project_fragment) {
         super.onViewCreated(view, savedInstanceState)
         binding = AddProjectFragmentBinding.bind(view)
 
-        binding?.toolbar?.setupWithNavController(findNavController())
-
+        setupToolbar()
         setupStatesListeners()
         setupSharedElementTransitions()
 
+    }
+
+    private fun setupToolbar() {
+        binding?.toolbar?.setupWithNavController(findNavController())
+        binding?.toolbar?.setOnMenuItemClickListener {
+            if (it.itemId == R.id.confirm) {
+                binding?.apply {
+                    viewModel.onConfirmClick(
+                        inputTitle.editText!!.text.toString(),
+                        inputDescription.editText!!.text.toString(),
+                        inputTechnologies.editText!!.text.toString()
+                    )
+                }
+                true
+            }
+
+            false
+        }
     }
 
     private fun setupStatesListeners() {
@@ -85,21 +102,6 @@ class AddProjectFragment : Fragment(R.layout.add_project_fragment) {
             binding?.inputTitle?.editText!!.setText(viewState.titleError)
         }
 
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.confirm) {
-            binding?.apply {
-                viewModel.onConfirmClick(
-                    inputTitle.editText!!.text.toString(),
-                    inputDescription.editText!!.text.toString(),
-                    inputTechnologies.editText!!.text.toString()
-                )
-            }
-            return true
-        }
-
-        return false
     }
 
 }

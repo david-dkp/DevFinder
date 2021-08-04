@@ -7,9 +7,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
+import dagger.hilt.android.AndroidEntryPoint
 import fr.feepin.devfinder.R
 import fr.feepin.devfinder.databinding.ProjectFragmentBinding
 
+@AndroidEntryPoint
 class ProjectFragment : Fragment(R.layout.project_fragment){
 
     private val viewModel: ProjectViewModel by viewModels()

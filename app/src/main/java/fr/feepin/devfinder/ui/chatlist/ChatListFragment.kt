@@ -6,10 +6,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import fr.feepin.devfinder.R
 import fr.feepin.devfinder.databinding.ChatListFragmentBinding
-import fr.feepin.devfinder.databinding.ChatListItemBinding
 
+@AndroidEntryPoint
 class ChatListFragment : Fragment(R.layout.chat_list_fragment) {
 
     private val viewModel: ChatListViewModel by viewModels()

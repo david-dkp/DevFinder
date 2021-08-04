@@ -7,6 +7,7 @@ import com.google.firebase.ktx.Firebase
 import fr.feepin.devfinder.data.models.Chat
 import fr.feepin.devfinder.data.models.Message
 import kotlinx.coroutines.tasks.await
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -17,6 +18,10 @@ class AppChatRepository @Inject constructor() : ChatRepository {
     private val chatsCollectionRef = firestore.collection("chats")
 
     override suspend fun fetchChatsByIds(chatsIdList: List<String>): List<Chat> {
+        if (chatsIdList.isEmpty()) {
+            return Collections.emptyList()
+        }
+
         return chatsCollectionRef
             .whereIn(FieldPath.documentId(), chatsIdList)
             .get()

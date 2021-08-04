@@ -20,8 +20,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ChatListViewModel @Inject constructor(
     @ApplicationContext val context: Context,
-    val userRepository: UserRepository,
-    val chatRepository: ChatRepository
+    private val userRepository: UserRepository,
+    private val chatRepository: ChatRepository
 ) : ViewModel(){
 
     private val _viewState = MutableLiveData<ChatListViewState>(ChatListViewState(false, Collections.emptyList()))

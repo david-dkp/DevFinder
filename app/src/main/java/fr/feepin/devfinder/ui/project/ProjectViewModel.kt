@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProjectViewModel @Inject constructor(
-    val projectRepository: ProjectRepository
+    private val projectRepository: ProjectRepository
 ) : ViewModel() {
 
     private val _viewState = MutableLiveData<ProjectViewState>()

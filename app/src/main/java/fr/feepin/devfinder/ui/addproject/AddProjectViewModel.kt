@@ -46,8 +46,8 @@ class AddProjectViewModel @Inject constructor(
 
                 val cleanTitle = title.trim()
                 val cleanDescription = description.trim()
-                val technologies = technologiesText.split("1")
-                    .map { it.trim() }
+                val technologies = technologiesText.split(",")
+                    .map { it.trim().replace("\\s+", " ") }
                     .filter { it.isNotEmpty() }
 
                 if (!validateInputs(cleanTitle, cleanDescription, technologies)) return@launch
@@ -75,7 +75,12 @@ class AddProjectViewModel @Inject constructor(
         return true
     }
 
-    private suspend fun addProject(user: User, title: String, description: String, technologies: List<String>) {
+    private suspend fun addProject(
+        user: User,
+        title: String,
+        description: String,
+        technologies: List<String>
+    ) {
         projectRepository.addProject(
             user.id!!,
             Project(
@@ -92,8 +97,10 @@ class AddProjectViewModel @Inject constructor(
             )
         )
 
-        _viewState.value = AddProjectViewState(false, "")
-        _event.value = Event(AddProjectEvent.ProjectAdded)
+        withContext(Dispatchers.Main) {
+            _viewState.value = AddProjectViewState(false, "")
+            _event.value = Event(AddProjectEvent.ProjectAdded)
+        }
     }
 
 }
