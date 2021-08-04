@@ -12,13 +12,14 @@ import fr.feepin.devfinder.data.models.Message
 import fr.feepin.devfinder.data.models.User
 import fr.feepin.devfinder.data.repos.ChatRepository
 import fr.feepin.devfinder.data.repos.UserRepository
+import fr.feepin.devfinder.utils.TimeFormatUtils
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 @HiltViewModel
-class ChatViewModel(
+class ChatViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val chatRepository: ChatRepository,
     private val userRepository: UserRepository
@@ -40,40 +41,43 @@ class ChatViewModel(
 
     private fun getSnapshotParser(): SnapshotParser<MessageViewState> {
         return SnapshotParser {
-            val userId = userRepository.listenUser().value.id!!
+            val userId = userRepository.getUser().value!!.id!!
             val message = it.toObject(Message::class.java)!!
 
             MessageViewState(
                 userId == message.senderUserId,
                 message.message,
-                getFormattedTimestamp(message.sendTimeTs)
+                TimeFormatUtils.getFormattedTimestamp(context, message.sendTimeTs)
             )
         }
     }
 
-    private fun getFormattedTimestamp(timestamp: Timestamp): String {
-        val timeFormat = DateFormat.getTimeFormat(context)
 
-        return timeFormat.format(timestamp.toDate())
-    }
 
     fun onArgs(args: ChatFragmentArgs) {
         chatId = args.chatId
 
         viewModelScope.launch(Dispatchers.IO) {
             val chat = chatRepository.fetchChatById(args.chatId)
-            val userId = userRepository.listenUser().value.id!!
+            val userId = userRepository.getUser().value?.id
 
-            val friendUserId = if (chat.firstUserId == userId) {
-                chat.secondUserId
-            } else {
-                chat.firstUserId
-            }
+            userId?.let {
+                chat?.let {
+                    val friendUserId = if (chat.firstUserId == userId) {
+                        chat.secondUserId
+                    } else {
+                        chat.firstUserId
+                    }
 
-            val friendUser = userRepository.fetchUserById(friendUserId)
+                    val friendUser = userRepository.fetchUserById(friendUserId)
 
-            withContext(Dispatchers.Main) {
-                _friendUserLiveData.value = friendUser
+                    friendUser?.let {
+                        withContext(Dispatchers.Main) {
+                            _friendUserLiveData.value = it
+                        }
+                    }
+
+                }
             }
 
         }

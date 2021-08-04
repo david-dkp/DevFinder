@@ -1,9 +1,11 @@
 package fr.feepin.devfinder.ui.login
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -59,13 +61,8 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
     }
 
     private fun toggleLoading(loading: Boolean) {
-        if (loading) {
-            binding?.scrim?.visibility = View.VISIBLE
-            binding?.btnAboutDevFinder?.isEnabled = false
-        } else {
-            binding?.scrim?.visibility = View.INVISIBLE
-            binding?.btnAboutDevFinder?.isEnabled = true
-        }
+        binding?.scrim?.isVisible = loading
+        binding?.btnAboutDevFinder?.isEnabled = !loading
     }
 
     private fun navigateToRegister() {
