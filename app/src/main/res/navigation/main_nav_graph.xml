@@ -73,6 +73,14 @@
     <fragment
         android:id="@+id/addProjectFragment"
         android:name="fr.feepin.devfinder.ui.addproject.AddProjectFragment"
-        android:label="AddProjectFragment" />
+        android:label="AddProjectFragment" >
+
+        <action
+            android:id="@+id/action_addProjectFragment_to_projectListFragment"
+            app:destination="@id/projectListFragment"
+            app:popUpTo="@id/projectListFragment"
+            />
+
+    </fragment>
 
 </navigation>

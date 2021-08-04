@@ -39,4 +39,6 @@
     <string name="yes_text">Yes</string>
     <string name="no_text">No</string>
     <string name="separate_coma_text">Separate them with a come \",\"</string>
+    <string name="confirm_add_project_title">Confirm</string>
+    <string name="confirm_add_project_desc">Add the new project</string>
 </resources>

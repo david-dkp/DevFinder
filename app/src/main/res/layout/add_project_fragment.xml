@@ -18,6 +18,7 @@
             style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:menu="@menu/add_project_toolbar_menu"
             />
 
     </com.google.android.material.appbar.AppBarLayout>

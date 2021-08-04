@@ -2,7 +2,9 @@ package fr.feepin.devfinder.ui.addproject
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -22,10 +24,6 @@ class AddProjectFragment : Fragment(R.layout.add_project_fragment) {
 
     private val viewModel: AddProjectViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,10 +31,24 @@ class AddProjectFragment : Fragment(R.layout.add_project_fragment) {
 
         binding?.toolbar?.setupWithNavController(findNavController())
 
+        setupStatesListeners()
+        setupSharedElementTransitions()
+
+    }
+
+    private fun setupStatesListeners() {
         viewModel.viewState.observe(viewLifecycleOwner) {
             renderUi(it)
         }
 
+        viewModel.event.observe(viewLifecycleOwner) { event ->
+            event.getData()?.let {
+                renderEvent(it)
+            }
+        }
+    }
+
+    private fun setupSharedElementTransitions() {
         sharedElementEnterTransition = MaterialContainerTransform().apply {
             startViewId = R.id.fabPostProject
             endView = binding!!.root
@@ -56,11 +68,38 @@ class AddProjectFragment : Fragment(R.layout.add_project_fragment) {
             startContainerColor = requireContext().themeColor(R.attr.colorSurface)
             endContainerColor = requireContext().themeColor(R.attr.colorPrimary)
         }
+    }
 
+    private fun renderEvent(event: AddProjectEvent) {
+        if (event is AddProjectEvent.ProjectAdded) {
+            findNavController().navigate(
+                AddProjectFragmentDirections.actionAddProjectFragmentToProjectListFragment()
+            )
+        }
     }
 
     private fun renderUi(viewState: AddProjectViewState) {
+        binding?.scrim?.root?.isVisible = viewState.loading
 
+        if (viewState.titleError.isNotEmpty()) {
+            binding?.inputTitle?.editText!!.setText(viewState.titleError)
+        }
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.confirm) {
+            binding?.apply {
+                viewModel.onConfirmClick(
+                    inputTitle.editText!!.text.toString(),
+                    inputDescription.editText!!.text.toString(),
+                    inputTechnologies.editText!!.text.toString()
+                )
+            }
+            return true
+        }
+
+        return false
     }
 
 }

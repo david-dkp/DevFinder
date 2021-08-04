@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/confirm"
+        android:title="@string/confirm_add_project_title"
+        android:contentDescription="@string/confirm_add_project_desc"
+        android:icon="@drawable/ic_check"
+        app:showAsAction="ifRoom"/>
+
+</menu>
