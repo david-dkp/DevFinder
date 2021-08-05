@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
         lifecycleScope.launch(Dispatchers.Main) {
             viewModel.userState.collect {
-                Log.d("debug", it?.toString() ?: "")
                 it?.let {
                     updateUserUi(it)
                 }
@@ -58,7 +57,6 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     }
 
     private fun updateUserUi(user: User) {
-        Log.d("debug", user.toString())
         binding?.apply {
             Glide.with(this@MainActivity)
                 .load(user.profilePictureUrl)
