@@ -63,5 +63,6 @@
     <dimen name="project_list_item_paddingHorizontal">18dp</dimen>
     <dimen name="project_list_item_ivViewCount_marginRight">5dp</dimen>
     <dimen name="project_list_item_marginHorizontal">15dp</dimen>
+    <dimen name="project_list_paddingVertical">10dp</dimen>
 
 </resources>

@@ -120,6 +120,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvTechnologies"
                 app:spanCount="2"
+                tools:listitem="@layout/profile_technologies_item"
                 />
 
             <TextView

@@ -65,6 +65,11 @@
         android:label="ProjectFragment">
 
         <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="false" />
+
+        <argument
             android:name="projectId"
             app:argType="string"
             app:nullable="false" />
