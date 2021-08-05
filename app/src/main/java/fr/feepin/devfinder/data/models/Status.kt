@@ -6,6 +6,6 @@ import com.google.firebase.firestore.PropertyName
 
 data class Status(
     @DocumentId val id: String? = null,
-    val online: Boolean,
-    val lastTimeOnlineTs: Timestamp
+    val online: Boolean = false,
+    val lastTimeOnlineTs: Timestamp = Timestamp(0, 0)
 )

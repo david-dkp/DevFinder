@@ -12,6 +12,6 @@ data class User(
     val technologies: List<String> = Collections.emptyList(),
     val username: String = "Anonymous",
     val bio: String = "",
-    val creationTs: Timestamp? = null,
+    val creationTs: Timestamp = Timestamp(0, 0),
     val chatsIdList: List<String> = Collections.emptyList()
 )

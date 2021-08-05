@@ -6,8 +6,8 @@ import com.google.firebase.firestore.PropertyName
 
 data class Message(
     @DocumentId val id: String? = null,
-    val senderUserId: String,
-    val receiverUserId: String,
-    val message: String,
-    val sendTimeTs: Timestamp,
+    val senderUserId: String = "",
+    val receiverUserId: String = "",
+    val message: String = "",
+    val sendTimeTs: Timestamp = Timestamp(0, 0),
 )
