@@ -1,6 +1,7 @@
 package fr.feepin.devfinder.data.repos
 
 import com.google.firebase.firestore.FieldPath
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import fr.feepin.devfinder.data.models.Project
@@ -37,13 +38,23 @@ class AppProjectRepository @Inject constructor() : ProjectRepository {
             .add(project)
     }
 
-    override suspend fun fetchProjectById(projectId: String): Project? {
-        return projectsCollectionRef
-            .whereEqualTo(FieldPath.documentId(), projectId)
-            .limit(1)
+    override suspend fun fetchProjectById(userId: String, projectId: String): Project? {
+        return Firebase.firestore.collection("users")
+            .document(userId)
+            .collection("projects")
+            .document(projectId)
             .get()
             .await()
-            .toObjects(Project::class.java)
-            .firstOrNull()
+            .toObject(Project::class.java)
+    }
+
+    override suspend fun incrementProjectViewCount(userId: String, projectId: String) {
+        firestore
+            .collection("users")
+            .document(userId)
+            .collection("projects")
+            .document(projectId)
+            .update("viewCount", FieldValue.increment(1))
+            .await()
     }
 }
