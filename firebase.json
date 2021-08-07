@@ -7,7 +7,12 @@
     "firestore": {
       "host": "localhost",
       "port": "7000"
+    },
+    "auth": {
+      "port": 9099
+    },
+    "ui": {
+      "enabled": true
     }
-
   }
 }

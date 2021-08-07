@@ -1,43 +1,56 @@
 rules_version = '2';
 service cloud.firestore {
-  match /databases/{database}/documents {
+    match /databases/{database}/documents {
 
-    function isAuthenticated() {
-      return request.auth != null;
-    }
-
-    function isUserPartOfChat(userId, chatId) {
-      let chatData = get(/databases/$(database)/documents/chats/$(chatId)).data;
-
-      return chatData.firstUserId == userId || chatData.secondUserId == uesrId;
-    }
-
-    match /users/{userId} {
-      allow write: if request.auth.uid == userId;
-      allow read: if isAuthenticated();
-
-      match /projects/{project} {
-
-        function incrementViewCountOnly() {
-          let affectedKeys = request.resource.data.diff(resource.data).affectedKeys();
-
-          return affectedKeys.hasOnly(["viewCount"]) && request.resource.data.viewCount == resource.data.viewCount + 1;
+        function isAuthenticated() {
+            return request.auth != null;
         }
 
-        allow write: if request.auth.uid == userId;
-        allow update: if incrementViewCountOnly();
-        allow read: if isAuthenticated();
-      }
-    }
+        match /{path=**}/projects/{project} {
+            allow read: if isAuthenticated();
+        }
 
-    match /status/{statusId} {
-      allow write: if request.auth.uid == statusId;
-      allow read: if isAuthenticated();
-    }
+        match /users/{userId}/projects/{projectId} {
+            function incrementViewCountOnly() {
+                let affectedKeys = request.resource.data.diff(resource.data).affectedKeys();
 
-    match /chats/{chatId=**} {
-      allow create, read: if isAuthenticated() && isUserPartOfChat(request.auth.uid, chatId);
-    }
+                return affectedKeys.hasOnly(["viewCount"]) && request.resource.data.viewCount == resource.data.viewCount + 1;
+            }
 
-  }
+            allow write: if request.auth.uid == userId;
+            allow update: if incrementViewCountOnly();
+        }
+
+        match /users/{userId} {
+            allow write: if request.auth.uid == userId;
+            allow read: if isAuthenticated();
+        }
+
+        match /status/{statusId} {
+            allow write: if request.auth.uid == statusId;
+            allow read: if isAuthenticated();
+        }
+
+        match /chats/{chat} {
+
+            function isChatValid() {
+                return request.resource.data.firstUserId != request.resource.data.secondUserId;
+            }
+
+            function isUserPartOfChat() {
+                let userId = request.auth.uid;
+                let chatData = resource.data;
+
+                return chatData.firstUserId == userId || chatData.secondUserId == userId;
+            }
+
+            allow read: if isAuthenticated() && isUserPartOfChat();
+            allow create: if isAuthenticated() && isChatValid();
+
+            match /messages/{message} {
+                allow write, read: if isAuthenticated() && isUserPartOfChat();
+            }
+        }
+
+    }
 }
