@@ -17,6 +17,8 @@ interface ProjectRepository {
 
     suspend fun fetchProjectById(userId: String, projectId: String): Project?
 
+    suspend fun fetchAllProjectsFromUser(userId: String): List<Project>
+
     suspend fun incrementProjectViewCount(userId: String, projectId: String)
 
 }

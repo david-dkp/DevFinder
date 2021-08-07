@@ -48,6 +48,15 @@ class AppProjectRepository @Inject constructor() : ProjectRepository {
             .toObject(Project::class.java)
     }
 
+    override suspend fun fetchAllProjectsFromUser(userId: String): List<Project> {
+        return Firebase.firestore.collection("users")
+            .document(userId)
+            .collection("projects")
+            .get()
+            .await()
+            .toObjects(Project::class.java)
+    }
+
     override suspend fun incrementProjectViewCount(userId: String, projectId: String) {
         firestore
             .collection("users")
