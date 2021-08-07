@@ -1,6 +1,7 @@
 package fr.feepin.devfinder.data.repos
 
 import android.util.Log
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -9,8 +10,6 @@ import fr.feepin.devfinder.data.models.Status
 import fr.feepin.devfinder.data.models.User
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.channels.sendBlocking
-import kotlinx.coroutines.channels.trySendBlocking
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
@@ -55,12 +54,18 @@ class AppUserRepository @Inject constructor(val authManager: AuthManager) : User
 
     override suspend fun fetchUserById(id: String): User? {
         val fetchUser = userCollectionRef.document(id).get().await()
-        val user = fetchUser.toObject<User>()
-        return user
+        return fetchUser.toObject<User>()
     }
 
     override suspend fun addUser(userId: String, user: User) {
         userCollectionRef.document(userId).set(user).await()
+    }
+
+    override suspend fun addChatIdToUser(userId: String, chatId: String) {
+        userCollectionRef
+            .document(userId)
+            .update("chatsIdList", FieldValue.arrayUnion(chatId))
+            .await()
     }
 
     override suspend fun setUserStatus(userId: String, status: Status) {

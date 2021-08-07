@@ -18,6 +18,8 @@ interface UserRepository {
     //Here I want to add the document User in the "users" collection.
     suspend fun addUser(userId:String, user: User)
 
+    suspend fun addChatIdToUser(userId: String, chatId: String)
+
     suspend fun setUserStatus(userId: String, status: Status)
 
     suspend fun fetchUserStatus(userId: String): Status?
