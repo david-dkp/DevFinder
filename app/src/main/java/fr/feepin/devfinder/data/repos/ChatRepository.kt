@@ -11,7 +11,8 @@ interface ChatRepository {
     suspend fun fetchLastMessageFromChatId(chatId: String): Message?
     suspend fun fetchChatById(chatId: String): Chat?
 
-    suspend fun addChat(chat: Chat)
+    suspend fun addChat(chat: Chat): String
+    suspend fun chatExists(firstUserId: String, secondUserId: String): Boolean
 
     fun getMessagesQuery(chatId: String): Query
     suspend fun addMessage(chatId: String, message: Message)

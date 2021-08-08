@@ -49,8 +49,18 @@ class AppChatRepository @Inject constructor() : ChatRepository {
             .toObject(Chat::class.java)
     }
 
-    override suspend fun addChat(chat: Chat) {
-        chatsCollectionRef.add(chat).await()
+    override suspend fun addChat(chat: Chat): String {
+        return chatsCollectionRef.add(chat).await().id
+    }
+
+    override suspend fun chatExists(firstUserId: String, secondUserId: String): Boolean {
+        val firstUserChats =  chatsCollectionRef
+            .whereArrayContains("membersIds", firstUserId)
+            .get()
+            .await()
+            .toObjects(Chat::class.java)
+
+        return firstUserChats.any { it.membersIds.contains(secondUserId) }
     }
 
     override fun getMessagesQuery(chatId: String): Query {
