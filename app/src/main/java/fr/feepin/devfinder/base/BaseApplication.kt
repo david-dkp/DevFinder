@@ -12,15 +12,6 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings
 class BaseApplication : Application(){
     override fun onCreate() {
         super.onCreate()
-        Firebase.firestore.useEmulator(
-            "10.0.2.2",
-            7000
-        )
-
-        val settings = FirebaseFirestoreSettings.Builder()
-            .setPersistenceEnabled(false)
-            .build()
-        Firebase.firestore.firestoreSettings = settings
 
     }
 }

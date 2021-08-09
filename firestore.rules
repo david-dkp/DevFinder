@@ -22,7 +22,7 @@ service cloud.firestore {
         }
 
         match /users/{userId} {
-            allow write: if request.auth.uid == userId;
+            allow write: if isAuthenticated();
             allow read: if isAuthenticated();
         }
 
@@ -33,19 +33,13 @@ service cloud.firestore {
 
         match /chats/{chat} {
 
-            function isChatValid() {
-                return request.resource.data.firstUserId != request.resource.data.secondUserId;
-            }
-
             function isUserPartOfChat() {
                 let userId = request.auth.uid;
-                let chatData = resource.data;
-
-                return chatData.firstUserId == userId || chatData.secondUserId == userId;
+                return userId in get(/databases/$(database)/documents/chats/$(chat)).data.membersIds || userId in resource.data.membersIds;
             }
 
             allow read: if isAuthenticated() && isUserPartOfChat();
-            allow create: if isAuthenticated() && isChatValid();
+            allow create: if isAuthenticated();
 
             match /messages/{message} {
                 allow write, read: if isAuthenticated() && isUserPartOfChat();

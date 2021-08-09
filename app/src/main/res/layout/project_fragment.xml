@@ -4,34 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:clipChildren="false">
 
     <com.google.android.material.appbar.AppBarLayout
         style="@style/Widget.MaterialComponents.AppBarLayout.Surface"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:liftOnScroll="true"
-        >
+        app:liftOnScroll="true">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|enterAlways"
-            />
+            app:layout_scrollFlags="scroll|enterAlways" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        >
+        android:clipChildren="false"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+            android:clipChildren="false"
+            android:paddingBottom="10dp">
 
             <TextView
                 android:id="@+id/tvTitle"
@@ -41,8 +40,7 @@
                 android:textAppearance="?attr/textAppearanceHeadline4"
                 android:textColor="?attr/colorOnSurface"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="A simple DiscordBot that can manage games and rôleplay"
-                />
+                tools:text="A simple DiscordBot that can manage games and rôleplay" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivProfilePicture"
@@ -51,8 +49,7 @@
                 android:layout_marginTop="@dimen/project_elements_vertical_gap"
                 app:layout_constraintLeft_toLeftOf="@id/tvTitle"
                 app:layout_constraintTop_toBottomOf="@id/tvTitle"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.DevFinder.CornerSize50Percent"
-                />
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.DevFinder.CornerSize50Percent" />
 
             <TextView
                 android:id="@+id/tvUsername"
@@ -65,8 +62,7 @@
                 app:layout_constraintLeft_toRightOf="@id/ivProfilePicture"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@id/ivProfilePicture"
-                tools:text="FeepIn"
-                />
+                tools:text="FeepIn" />
 
             <TextView
                 android:id="@+id/tvDescription"
@@ -76,8 +72,55 @@
                 android:layout_marginTop="@dimen/project_elements_vertical_gap"
                 android:textAppearance="?attr/textAppearanceHeadline5"
                 app:layout_constraintTop_toBottomOf="@id/ivProfilePicture"
-                tools:text="This DiscordBot will be open source and ultra modularized. Everyone will be able to personnalize that bot for their server in code, or with no-code using a tool that I've built. This bot is powered by Tom's AI, a company that offers AI API. What I wanna do now it's to start developing the framework for creating the modules. It should be easy for developers as well for our no-code coders"
-                />
+                tools:text="This DiscordBot will be open source and ultra modularized. Everyone will be able to personnalize that bot for their server in code, or with no-code using a tool that I've built. This bot is powered by Tom's AI, a company that offers AI API. What I wanna do now it's to start developing the framework for creating the modules. It should be easy for developers as well for our no-code coders" />
+
+            <TextView
+                android:id="@+id/tvTechnologies"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/project_elements_vertical_gap"
+                android:text="@string/technologies_text"
+                android:textAppearance="?attr/textAppearanceHeadline5"
+                android:textSize="28sp"
+                app:layout_constraintLeft_toLeftOf="@id/tvDescription"
+                app:layout_constraintRight_toRightOf="@id/tvDescription"
+                app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTechnologies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:padding="@dimen/profile_rvTechnologies_padding"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/tvTechnologies"
+                app:spanCount="2"
+                tools:listitem="@layout/profile_technologies_item" />
+
+            <TextView
+                android:id="@+id/tvInterestedProject"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/intersted_projet_text"
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceHeadline5"
+                android:textSize="28sp"
+                app:layout_constraintLeft_toLeftOf="@id/tvDescription"
+                app:layout_constraintRight_toRightOf="@id/tvDescription"
+                app:layout_constraintTop_toBottomOf="@id/rvTechnologies" />
+
+            <Button
+                android:id="@+id/btnStartConversation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/start_conversation_text"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintLeft_toLeftOf="@id/tvDescription"
+                app:layout_constraintRight_toRightOf="@id/tvDescription"
+                app:layout_constraintTop_toBottomOf="@id/tvInterestedProject" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

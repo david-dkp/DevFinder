@@ -61,7 +61,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
     }
 
     private fun toggleLoading(loading: Boolean) {
-        binding?.scrim?.isVisible = loading
+        binding?.scrim?.root?.isVisible = loading
         binding?.btnAboutDevFinder?.isEnabled = !loading
     }
 

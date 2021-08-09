@@ -21,7 +21,7 @@
         <action
             android:id="@+id/action_registerLevelFragment_to_projectListFragment"
             app:destination="@+id/main_nav_graph"
-            app:popUpTo="@id/loginFragment"
+            app:popUpTo="@id/loginNavigation"
             app:popUpToInclusive="true"
             />
 
@@ -35,5 +35,4 @@
             android:id="@+id/action_registerTechnologiesFragment_to_registerLevelFragment"
             app:destination="@id/registerLevelFragment" />
     </fragment>
-    <include app:graph="@navigation/main_nav_graph" />
 </navigation>

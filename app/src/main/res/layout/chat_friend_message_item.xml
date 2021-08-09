@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:background="?attr/colorPrimary"
+    android:layout_marginVertical="@dimen/chat_item_marginVertical"
     >
 
     <TextView
@@ -14,6 +15,7 @@
         android:background="@drawable/message_background"
         android:backgroundTint="?attr/colorOnPrimary"
         android:paddingHorizontal="@dimen/chat_message_paddingHorizontal"
+        android:paddingVertical="@dimen/chat_message_paddingVertical"
         android:textColor="?attr/colorOnSurface"
         android:textSize="@dimen/chat_message_textSize"
         app:layout_constrainedWidth="true"

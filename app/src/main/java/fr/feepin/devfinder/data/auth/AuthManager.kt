@@ -66,7 +66,7 @@ class AuthManager @Inject constructor() {
                 authResult.uid,
                 firebaseAuthResult.user?.photoUrl.toString()
             )
-            Log.d("debug", authResult.toString())
+
             authResult
         } catch (e: Exception) {
             _authState.value = AuthState.Unauthenticated

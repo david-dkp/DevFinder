@@ -27,7 +27,7 @@
     <string name="body_text">If you have any doubt related to app development ask David</string>
     <string name="add_project_desc">Post a project</string>
     <string name="auth_error_message">Something went wrong when signing in.</string>
-    <string name="devfinder_description_text">DevFinder is an app that helps you to find a collaborator to work on a project together. Propose your project or find a project you find interesting.</string>
+    <string name="devfinder_description_text">DevFinder is an app that helps you find a collaborator to work on a project together. Propose your project or find a project you find interesting.</string>
     <string name="title_text">Title</string>
     <string name="description_text">Description</string>
     <string name="view_count_desc">View count</string>
@@ -41,4 +41,13 @@
     <string name="separate_coma_text">Separate them with a come \",\"</string>
     <string name="confirm_add_project_title">Confirm</string>
     <string name="confirm_add_project_desc">Add the new project</string>
+    <string name="start_conversation_text">Start a conversation</string>
+    <string name="intersted_projet_text">Interested in the project ?</string>
+    <string name="beginner_level_text">Beginner level</string>
+    <string name="intermediate_level_text">Intermediate level</string>
+    <string name="advanced_level_text">Advanced level</string>
+    <string name="my_profile_title">My profile</string>
+    <string name="sign_out_title">Sign out</string>
+    <string name="profile_label">Profile</string>
+    <string name="add_project_label">Add a new project</string>
 </resources>

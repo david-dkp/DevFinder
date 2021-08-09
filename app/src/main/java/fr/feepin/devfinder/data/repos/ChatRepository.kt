@@ -12,7 +12,7 @@ interface ChatRepository {
     suspend fun fetchChatById(chatId: String): Chat?
 
     suspend fun addChat(chat: Chat): String
-    suspend fun chatExists(firstUserId: String, secondUserId: String): Boolean
+    suspend fun fetchChat(firstUserId: String, secondUserId: String): Chat?
 
     fun getMessagesQuery(chatId: String): Query
     suspend fun addMessage(chatId: String, message: Message)

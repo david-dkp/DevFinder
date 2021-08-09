@@ -10,14 +10,14 @@ import fr.feepin.devfinder.R
 import fr.feepin.devfinder.databinding.ChatFriendMessageItemBinding
 import fr.feepin.devfinder.databinding.ChatUserMessageItemBinding
 
-class MessageAdapter(options: FirestoreRecyclerOptions<MessageViewState>) :
+class MessageAdapter(options: FirestoreRecyclerOptions<MessageViewState>, private val onDataChanged: (() -> Unit)? = null) :
     FirestoreRecyclerAdapter<MessageViewState, MessageAdapter.ViewHolder>(
         options
     ) {
 
     companion object {
         private const val USER_MESSAGE_TYPE = 1
-        private const val FRIEND_MESSAGE_TYPE = 1
+        private const val FRIEND_MESSAGE_TYPE = 2
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -49,6 +49,11 @@ class MessageAdapter(options: FirestoreRecyclerOptions<MessageViewState>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, model: MessageViewState) {
         holder.bind(model)
+    }
+
+    override fun onDataChanged() {
+        super.onDataChanged()
+        onDataChanged?.invoke()
     }
 
     sealed class ViewHolder(rootView: View) : RecyclerView.ViewHolder(rootView) {

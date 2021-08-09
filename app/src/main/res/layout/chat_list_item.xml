@@ -1,69 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    app:cardCornerRadius="0dp"
     android:layout_height="@dimen/chat_list_item_height"
+    app:strokeWidth="0dp"
+    app:cardElevation="0dp"
     >
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/ivProfilePicture"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:padding="@dimen/chat_list_item_profile_picture_padding"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.DevFinder.CornerSize50Percent"
-        />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:textAppearance="?attr/textAppearanceHeadline5"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toTopOf="@id/tvLastMessage"
-        app:layout_constraintLeft_toRightOf="@id/ivProfilePicture"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        tools:text="sitemasked"
-        />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivProfilePicture"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="@dimen/chat_list_item_profile_picture_padding"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.DevFinder.CornerSize50Percent"
+            />
 
-    <View
-        android:id="@+id/vOnlineIndicator"
-        android:layout_width="@dimen/chat_list_item_online_indicator_size"
-        android:layout_height="@dimen/chat_list_item_online_indicator_size"
-        android:layout_marginStart="@dimen/chat_list_item_online_indicator_marginLeft"
-        android:background="@drawable/rounded_background"
-        android:backgroundTint="@color/christi"
-        app:layout_constraintBottom_toBottomOf="@id/tvName"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintLeft_toRightOf="@id/tvName"
-        app:layout_constraintRight_toLeftOf="@id/tvLastTimeMessage"
-        app:layout_constraintTop_toTopOf="@id/tvName"
-        />
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toTopOf="@id/tvLastMessage"
+            app:layout_constraintLeft_toRightOf="@id/ivProfilePicture"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="sitemasked"
+            />
 
-    <TextView
-        android:id="@+id/tvLastTimeMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/chat_list_item_profile_picture_padding"
-        android:textAppearance="?attr/textAppearanceBody1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvName"
-        tools:text="2 days ago"
-        />
+        <View
+            android:id="@+id/vOnlineIndicator"
+            android:layout_width="@dimen/chat_list_item_online_indicator_size"
+            android:layout_height="@dimen/chat_list_item_online_indicator_size"
+            android:layout_marginStart="@dimen/chat_list_item_online_indicator_marginLeft"
+            android:background="@drawable/rounded_background"
+            android:backgroundTint="@color/christi"
+            app:layout_constraintBottom_toBottomOf="@id/tvName"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toRightOf="@id/tvName"
+            app:layout_constraintRight_toLeftOf="@id/tvLastTimeMessage"
+            app:layout_constraintTop_toTopOf="@id/tvName"
+            />
 
-    <TextView
-        android:id="@+id/tvLastMessage"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?attr/textAppearanceSubtitle1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/ivProfilePicture"
-        app:layout_constraintTop_toBottomOf="@id/tvName"
-        tools:text="Wow, this is really epic"
-        />
+        <TextView
+            android:id="@+id/tvLastTimeMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/chat_list_item_profile_picture_padding"
+            android:textAppearance="?attr/textAppearanceBody1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvName"
+            tools:text="2 days ago"
+            />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            app:layout_constraintRight_toRightOf="@id/tvLastTimeMessage"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:id="@+id/tvLastMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/ivProfilePicture"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            tools:text="Wow, this is really epic"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorPrimary"
-    >
+    android:background="?attr/colorPrimary">
 
     <View
         android:layout_width="0dp"
@@ -13,8 +12,7 @@
         android:backgroundTint="?attr/colorPrimaryVariant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvDevFinder"
@@ -26,8 +24,7 @@
         android:textColor="?attr/colorOnPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvLogin"
@@ -40,8 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="@integer/login_login_text_vertical_bias"
-        />
+        app:layout_constraintVertical_bias="@integer/login_login_text_vertical_bias" />
 
     <Button
         android:id="@+id/btnAboutDevFinder"
@@ -52,8 +48,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imbtnGoogle"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/imbtnGoogle" />
 
     <ImageButton
         android:id="@+id/imbtnTwitter"
@@ -61,25 +56,25 @@
         android:layout_height="@dimen/login_btn_size"
         android:layout_marginStart="@dimen/login_btn_group_marginHorizontal"
         android:background="@drawable/round_corners"
+        android:backgroundTint="?attr/colorSurface"
         android:contentDescription="@string/login_twitter_desc"
         android:src="@raw/twitter_logo"
         app:layout_constraintBottom_toBottomOf="@+id/imbtnGoogle"
         app:layout_constraintEnd_toStartOf="@id/imbtnGoogle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imbtnGithub"
-        />
+        app:layout_constraintTop_toTopOf="@+id/imbtnGithub" />
 
     <ImageButton
         android:id="@+id/imbtnGoogle"
         android:layout_width="@dimen/login_btn_size"
         android:layout_height="@dimen/login_btn_size"
         android:background="@drawable/round_corners"
+        android:backgroundTint="?attr/colorSurface"
         android:contentDescription="@string/login_google_desc"
         android:src="@raw/google_logo"
         app:layout_constraintLeft_toRightOf="@id/imbtnTwitter"
         app:layout_constraintRight_toLeftOf="@id/imbtnGithub"
-        app:layout_constraintTop_toTopOf="@id/imbtnGithub"
-        />
+        app:layout_constraintTop_toTopOf="@id/imbtnGithub" />
 
     <ImageButton
         android:id="@+id/imbtnGithub"
@@ -88,22 +83,13 @@
         android:layout_marginTop="@dimen/login_btn_marginTop"
         android:layout_marginEnd="@dimen/login_btn_group_marginHorizontal"
         android:background="@drawable/round_corners"
+        android:backgroundTint="?attr/colorSurface"
         android:contentDescription="@string/login_github_desc"
         android:src="@raw/github_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/imbtnGoogle"
-        app:layout_constraintTop_toBottomOf="@+id/tvLogin"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/tvLogin" />
 
-    <View
-        android:id="@+id/scrim"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha="0.5"
-        android:background="@color/black"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="invisible"
-        />
+    <include layout="@layout/register_loading_scrim_include" android:id="@+id/scrim" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

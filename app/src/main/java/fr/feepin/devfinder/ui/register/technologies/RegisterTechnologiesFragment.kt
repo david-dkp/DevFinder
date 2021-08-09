@@ -18,7 +18,7 @@ import fr.feepin.devfinder.databinding.RegisterTechnologiesFragmentBinding
 import fr.feepin.devfinder.ui.register.RegisterViewModel
 
 @AndroidEntryPoint
-class RegisterTechnologiesFragment : Fragment(R.layout.register_technologies_fragment){
+class RegisterTechnologiesFragment : Fragment(R.layout.register_technologies_fragment) {
 
     private var binding: RegisterTechnologiesFragmentBinding? = null
 
@@ -34,12 +34,7 @@ class RegisterTechnologiesFragment : Fragment(R.layout.register_technologies_fra
     private fun setupTechnologiesInput() {
         binding?.apply {
             includeBtnNext.btnNext.setOnClickListener {
-                registerViewModel.onTechnologies(
-                    inputTechnologies.editText!!.text.toString()
-                        .split(",")
-                        .map { it.trim() }
-                        .filter { it != "" }
-                )
+                registerViewModel.onTechnologies(inputTechnologies.editText!!.text.toString())
 
                 findNavController().navigate(
                     RegisterTechnologiesFragmentDirections.actionRegisterTechnologiesFragmentToRegisterLevelFragment()

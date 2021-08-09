@@ -3,34 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             style="@style/Widget.MaterialComponents.Toolbar.Surface"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll"
-            />
+            app:layout_scrollFlags="scroll" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        >
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivProfilePicture"
@@ -39,8 +34,7 @@
                 android:layout_margin="@dimen/profile_paddingHorizontal"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.DevFinder.CornerSize50Percent"
-                />
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.DevFinder.CornerSize50Percent" />
 
             <TextView
                 android:id="@+id/tvName"
@@ -55,8 +49,7 @@
                 app:layout_constraintRight_toLeftOf="@id/ivChat"
                 app:layout_constraintTop_toTopOf="@id/ivProfilePicture"
                 app:layout_constraintVertical_chainStyle="packed"
-                tools:text="FeepIn"
-                />
+                tools:text="FeepIn" />
 
             <TextView
                 android:id="@+id/tvLevel"
@@ -68,8 +61,7 @@
                 app:layout_constraintLeft_toLeftOf="@id/tvName"
                 app:layout_constraintRight_toRightOf="@id/tvName"
                 app:layout_constraintTop_toBottomOf="@id/tvName"
-                tools:text="Beginner developer"
-                />
+                tools:text="Beginner developer" />
 
             <ImageView
                 android:id="@+id/ivChat"
@@ -82,8 +74,7 @@
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@id/ivProfilePicture"
-                app:tint="?attr/colorPrimary"
-                />
+                app:tint="?attr/colorPrimary" />
 
             <TextView
                 android:id="@+id/tvDescription"
@@ -93,11 +84,9 @@
                 android:layout_marginTop="@dimen/profile_elements_vertical_gap"
                 android:alpha="0.8"
                 android:ellipsize="end"
-                android:maxLines="4"
                 android:textAppearance="?attr/textAppearanceBody1"
                 app:layout_constraintTop_toBottomOf="@id/ivProfilePicture"
-                tools:text="A JavaScript ecosystem enthusiast. Over 9+ years in commerciaA JavaScript ecosystem enthusiast. A JavaScript ecosystem enthusiast.l p A JavaScript ecosystem enthusiast. rojects in automotive, entertainment, games, and e-commerce."
-                />
+                tools:text="A JavaScript ecosystem enthusiast. Over 9+ years in commerciaA JavaScript ecosystem enthusiast. A JavaScript ecosystem enthusiast.l p A JavaScript ecosystem enthusiast. rojects in automotive, entertainment, games, and e-commerce." />
 
             <TextView
                 android:id="@+id/tvTechnologies"
@@ -107,42 +96,41 @@
                 android:text="@string/technologies_text"
                 android:textAppearance="?attr/textAppearanceHeadline5"
                 app:layout_constraintLeft_toLeftOf="@id/ivProfilePicture"
-                app:layout_constraintTop_toBottomOf="@id/tvDescription"
-                />
+                app:layout_constraintTop_toBottomOf="@id/tvDescription" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTechnologies"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clipToPadding="false"
                 android:orientation="horizontal"
                 android:padding="@dimen/profile_rvTechnologies_padding"
                 app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvTechnologies"
                 app:spanCount="2"
-                tools:listitem="@layout/profile_technologies_item"
-                />
+                tools:listitem="@layout/profile_technologies_item" />
 
             <TextView
                 android:id="@+id/tvProjects"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/profile_elements_vertical_gap"
                 android:text="@string/projects_text"
                 android:textAppearance="?attr/textAppearanceHeadline5"
                 app:layout_constraintLeft_toLeftOf="@id/ivProfilePicture"
-                app:layout_constraintTop_toBottomOf="@id/rvTechnologies"
-                />
+                app:layout_constraintTop_toBottomOf="@id/rvTechnologies" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvProjects"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="@dimen/profile_rvProjects_height"
+                android:clipToPadding="false"
                 android:orientation="vertical"
                 android:padding="@dimen/profile_rvProjects_padding"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/rvProjects"
-                />
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvProjects"
+                app:layout_constraintRight_toRightOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

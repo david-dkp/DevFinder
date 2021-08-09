@@ -7,26 +7,24 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="fr.feepin.devfinder.ui.profile.ProfileFragment"
-        android:label="ProfileFragment">
+        android:label="@string/profile_label">
 
         <argument
             android:name="userId"
             app:argType="string"
             app:nullable="false" />
+
         <action
             android:id="@+id/action_profileFragment_to_projectFragment"
-            app:destination="@id/projectFragment" />
+            app:destination="@id/projectFragment"
+            app:popUpTo="@id/projectFragment"
+            app:popUpToInclusive="true" />
 
     </fragment>
 
-    <action
-        android:id="@+id/action_to_profileFragment"
-        app:destination="@id/profileFragment" />
-
     <fragment
         android:id="@+id/chatFragment"
-        android:name="fr.feepin.devfinder.ui.chat.ChatFragment"
-        android:label="ChatFragment">
+        android:name="fr.feepin.devfinder.ui.chat.ChatFragment">
 
         <argument
             android:name="chatId"
@@ -36,7 +34,9 @@
     </fragment>
     <action
         android:id="@+id/action_to_chatFragment"
-        app:destination="@id/chatFragment" />
+        app:destination="@id/chatFragment"
+        app:popUpTo="@id/chatFragment"
+        app:popUpToInclusive="true" />
 
 
     <fragment
@@ -61,8 +61,7 @@
 
     <fragment
         android:id="@+id/projectFragment"
-        android:name="fr.feepin.devfinder.ui.project.ProjectFragment"
-        android:label="ProjectFragment">
+        android:name="fr.feepin.devfinder.ui.project.ProjectFragment">
 
         <argument
             android:name="userId"
@@ -74,18 +73,33 @@
             app:argType="string"
             app:nullable="false" />
 
+        <action
+            android:id="@+id/action_projectFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/addProjectFragment"
         android:name="fr.feepin.devfinder.ui.addproject.AddProjectFragment"
-        android:label="AddProjectFragment" >
+        android:label="@string/add_project_label">
 
         <action
             android:id="@+id/action_addProjectFragment_to_projectListFragment"
             app:destination="@id/projectListFragment"
-            app:popUpTo="@id/projectListFragment"
-            />
+            app:popUpTo="@id/projectListFragment" />
 
     </fragment>
+
+    <action
+        android:id="@+id/action_to_profileFragment"
+        app:destination="@id/profileFragment" />
+
+    <action
+        android:id="@+id/action_to_loginNavigation"
+        app:destination="@id/loginNavigation"
+        app:popUpTo="@id/main_nav_graph"
+        app:popUpToInclusive="true" />
+
+    <include app:graph="@navigation/login_graph" />
 
 </navigation>

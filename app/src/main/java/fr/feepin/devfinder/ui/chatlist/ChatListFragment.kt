@@ -1,10 +1,13 @@
 package fr.feepin.devfinder.ui.chatlist
 
+import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import fr.feepin.devfinder.R
@@ -30,8 +33,12 @@ class ChatListFragment : Fragment(R.layout.chat_list_fragment) {
         }
 
         binding?.rvChats?.apply {
-            adapter = adapter
+            adapter = this@ChatListFragment.adapter
             layoutManager = LinearLayoutManager(requireContext())
+            val divider = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+            val insetDrawable = InsetDrawable(divider.drawable, resources.getDimensionPixelSize(R.dimen.chat_list_item_height), 0, 0, 0)
+            divider.setDrawable(insetDrawable)
+            addItemDecoration(divider)
         }
 
         viewModel.viewState.observe(viewLifecycleOwner) {

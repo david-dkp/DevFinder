@@ -33,7 +33,7 @@ class AppChatRepository @Inject constructor() : ChatRepository {
         return chatsCollectionRef
             .document(chatId)
             .collection("messages")
-            .orderBy("send_time_ts", Query.Direction.DESCENDING)
+            .orderBy("sendTimeTs", Query.Direction.DESCENDING)
             .limit(1)
             .get()
             .await()
@@ -53,22 +53,21 @@ class AppChatRepository @Inject constructor() : ChatRepository {
         return chatsCollectionRef.add(chat).await().id
     }
 
-    override suspend fun chatExists(firstUserId: String, secondUserId: String): Boolean {
+    override suspend fun fetchChat(firstUserId: String, secondUserId: String): Chat? {
         val firstUserChats =  chatsCollectionRef
             .whereArrayContains("membersIds", firstUserId)
             .get()
             .await()
             .toObjects(Chat::class.java)
 
-        return firstUserChats.any { it.membersIds.contains(secondUserId) }
+        return firstUserChats.firstOrNull { it.membersIds.contains(secondUserId) }
     }
 
     override fun getMessagesQuery(chatId: String): Query {
         return chatsCollectionRef
             .document(chatId)
             .collection("messages")
-            .orderBy("send_time_ts", Query.Direction.DESCENDING)
-            .limit(50)
+            .orderBy("sendTimeTs", Query.Direction.DESCENDING)
     }
 
     override suspend fun addMessage(chatId: String, message: Message) {

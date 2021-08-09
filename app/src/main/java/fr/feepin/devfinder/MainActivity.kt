@@ -3,8 +3,12 @@ package fr.feepin.devfinder
 import android.os.Bundle
 import android.transition.TransitionManager
 import android.util.Log
+import android.view.ContextMenu
+import android.view.MenuItem
 import android.view.View
+import android.widget.PopupMenu
 import androidx.activity.viewModels
+import androidx.annotation.MenuRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -33,16 +37,33 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        setSupportActionBar(binding?.toolbar)
-
+        setupToolbar()
         setupStateListeners()
     }
 
+    private fun setupToolbar() {
+        setSupportActionBar(binding?.toolbar)
+        binding?.ivProfilePicture?.setOnClickListener {
+            showMenu(it, R.menu.activity_main_profile_menu)
+        }
+    }
+
+    private fun showMenu(v: View, @MenuRes menuRes: Int) {
+        val popup = PopupMenu(this, v)
+        popup.menuInflater.inflate(menuRes, popup.menu)
+
+        popup.setOnMenuItemClickListener { menuItem: MenuItem ->
+            viewModel.onMenuItemClick(menuItem)
+        }
+
+        popup.show()
+    }
+
     private fun setupStateListeners() {
-        lifecycleScope.launch {
+        lifecycleScope.launchWhenStarted {
             viewModel.authState.collect {
                 if (it is AuthState.Unauthenticated) {
-                    findNavController(R.id.fragmentContainerView).setGraph(R.navigation.login_graph)
+                    findNavController(R.id.fragmentContainerView).navigate(MainNavGraphDirections.actionToLoginNavigation())
                 }
             }
         }
@@ -54,6 +75,12 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 }
             }
         }
+
+        viewModel.event.observe(this) {
+            it.getData()?.let {
+                renderEvent(it)
+            }
+        }
     }
 
     private fun updateUserUi(user: User) {
@@ -61,6 +88,14 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             Glide.with(this@MainActivity)
                 .load(user.profilePictureUrl)
                 .into(ivProfilePicture)
+        }
+    }
+
+    private fun renderEvent(event: MainEvent) {
+        if (event is MainEvent.GoToProfile) {
+            findNavController(R.id.fragmentContainerView).navigate(
+                MainNavGraphDirections.actionToProfileFragment(event.userId)
+            )
         }
     }
 

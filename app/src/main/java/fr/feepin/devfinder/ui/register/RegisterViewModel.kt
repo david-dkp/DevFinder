@@ -49,8 +49,10 @@ class RegisterViewModel @Inject constructor(
         bioLiveData.value = bio
     }
 
-    fun onTechnologies(technologies: List<String>) {
-        technologiesLiveData.value = technologies
+    fun onTechnologies(technologiesText: String) {
+        technologiesLiveData.value = technologiesText.split(",")
+            .map { it.trim().replace("\\s+", " ") }
+            .filter { it.isNotEmpty() }
     }
 
     fun onLevel(level: Level) {

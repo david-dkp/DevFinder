@@ -21,6 +21,4 @@
 
     <include app:graph="@navigation/register_graph" />
 
-    <include app:graph="@navigation/main_nav_graph" />
-
 </navigation>
